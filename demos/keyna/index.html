@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейна — студия маникюра и красоты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+<style>
+:root{--bg:#0C060E;--bg2:#140B18;--bg3:#1C1022;--acc:#C87090;--acc2:#E890AA;--text:#F0E8F0;--mu:#7A5868;--bd:rgba(200,112,144,.14);--bd2:rgba(200,112,144,.38)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 52px;background:rgba(12,6,14,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+.nb{font-family:'Spectral',serif;font-size:1.3rem;font-weight:500;color:var(--acc);display:flex;align-items:center;gap:10px;letter-spacing:.05em}
+.nl{display:flex;gap:28px;list-style:none}.nl a{font-size:.74rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);transition:color .2s}.nl a:hover{color:var(--acc)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 52px 80px;position:relative;overflow:hidden}
+.hbg{position:absolute;inset:0;background:radial-gradient(ellipse 40% 55% at 70% 45%,rgba(200,112,144,.1) 0%,transparent 60%),radial-gradient(ellipse 20% 30% at 20% 80%,rgba(200,112,144,.05) 0%,transparent 50%)}
+.hflower{position:absolute;right:6%;top:50%;transform:translateY(-50%);opacity:.05}
+.hc{position:relative;max-width:580px}
+.hpre{font-family:'Spectral',serif;font-size:.88rem;font-style:italic;color:var(--acc);opacity:.8;margin-bottom:28px;letter-spacing:.08em}
+h1{font-family:'Spectral',serif;font-size:clamp(3.2rem,7.5vw,7rem);font-weight:300;line-height:.92;letter-spacing:-.01em;margin-bottom:20px}
+h1 em{color:var(--acc);font-style:italic}
+.hdash{width:48px;height:1px;background:var(--acc);opacity:.5;margin-bottom:20px}
+.hsub{font-size:1rem;color:var(--mu);max-width:420px;margin-bottom:44px;line-height:1.8;font-weight:300}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.ba{font-family:'Inter',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:14px 34px;background:var(--acc);color:#0C060E;border:none;border-radius:2px;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:10px}
+.ba:hover{background:var(--acc2);transform:translateY(-2px)}
+.bg{font-family:'Inter',sans-serif;font-weight:400;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:14px 34px;background:transparent;color:var(--text);border:1px solid var(--bd2);border-radius:2px;transition:all .2s}
+.bg:hover{border-color:var(--acc);color:var(--acc)}
+.hst{display:flex;gap:0;margin-top:60px;border:1px solid var(--bd);max-width:380px}
+.hs{flex:1;padding:18px 16px;border-right:1px solid var(--bd)}.hs:last-child{border-right:none}
+.hsn{font-family:'Spectral',serif;font-size:2rem;font-weight:400;color:var(--acc);line-height:1}
+.hsl{font-size:.68rem;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-top:5px}
+.svcs{padding:100px 52px;max-width:1200px;margin:0 auto}
+.lbl{font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+.hd{font-family:'Spectral',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.05;margin-bottom:10px}
+.sb{font-size:.97rem;color:var(--mu);max-width:500px;margin-bottom:52px;font-weight:300}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.sc{background:var(--bg2);border:1px solid var(--bd);border-radius:8px;padding:36px 26px;transition:all .25s;position:relative}
+.sc:hover{border-color:var(--bd2);transform:translateY(-2px)}
+.si{width:48px;height:48px;background:rgba(200,112,144,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.sc h3{font-family:'Spectral',serif;font-size:1.2rem;font-weight:400;margin-bottom:8px}
+.sc p{font-size:.85rem;color:var(--mu);line-height:1.7}
+.abw{background:var(--bg2)}
+.abi{max-width:1200px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.fl{list-style:none;display:flex;flex-direction:column;gap:12px}
+.ft{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--bd);border-radius:8px;transition:border-color .2s}.ft:hover{border-color:var(--bd2)}
+.fi{width:40px;height:40px;flex-shrink:0;background:rgba(200,112,144,.1);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.ft h4{font-weight:500;font-size:.93rem;margin-bottom:2px}.ft p{font-size:.82rem;color:var(--mu)}
+.avis{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.av{background:var(--bg3);border:1px solid var(--bd);border-radius:8px;padding:24px 18px;text-align:center}
+.avn{font-family:'Spectral',serif;font-size:2rem;font-weight:400;color:var(--acc);line-height:1}.avl{font-size:.76rem;color:var(--mu);margin-top:5px}
+.cta{padding:80px 52px;text-align:center;max-width:640px;margin:0 auto}
+.cta h2{font-family:'Spectral',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:12px}
+.cta h2 em{color:var(--acc)}.cta p{color:var(--mu);margin-bottom:36px}
+.cl{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:18px}.cl a{font-size:.87rem;color:var(--mu);display:flex;align-items:center;gap:8px;transition:color .2s}.cl a:hover{color:var(--acc)}
+footer{border-top:1px solid var(--bd);padding:32px 52px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.fb{font-family:'Spectral',serif;font-weight:400;font-size:1.1rem;color:var(--acc)}.finfo{font-size:.8rem;color:var(--mu);text-align:center}.fc{font-size:.74rem;color:rgba(122,88,104,.4)}
+@media(max-width:768px){nav{padding:14px 20px}.nl{display:none}.hero{padding:100px 20px 60px}.svcs{padding:60px 20px}.abi{grid-template-columns:1fr;gap:40px;padding:60px 20px}.cta{padding:60px 20px}footer{padding:28px 20px;flex-direction:column;text-align:center}}
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before,html::after,body::before,body::after{content:"vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;position:fixed !important;top:50% !important;left:50% !important;width:300vmax !important;height:auto !important;margin:0 !important;padding:0 !important;display:block !important;visibility:visible !important;opacity:.13 !important;text-align:center !important;font-family:"Unbounded","Onest",system-ui,sans-serif !important;font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;line-height:1 !important;letter-spacing:.35em !important;text-transform:lowercase !important;color:#FFE9A8 !important;background:transparent !important;white-space:nowrap !important;overflow:visible !important;pointer-events:none !important;user-select:none !important;-webkit-user-select:none !important;z-index:2147483646 !important;transform-origin:center center !important;mix-blend-mode:screen !important;text-shadow:none !important;clip-path:none !important;filter:none !important;}
+html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important}
+html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important}
+body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important}
+body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important}
+/* === END DEMO WATERMARK === */
+</style>
+</head>
+<body>
+<nav>
+  <div class="nb"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M9 2C7 2 5 4 5 6c0 2 1.5 4 4 5 2.5-1 4-3 4-5 0-2-2-4-4-4z" stroke="#C87090" stroke-width="1.3"/><path d="M9 11v8" stroke="#C87090" stroke-width="1.3" stroke-linecap="round"/><path d="M6 16c0 0 1.5-2 3-1s3 1 3 1" stroke="#C87090" stroke-width="1.2" stroke-linecap="round"/></svg>Кейна</div>
+  <ul class="nl"><li><a href="#svcs">Услуги</a></li><li><a href="#about">О студии</a></li><li><a href="#contact">Запись</a></li></ul>
+</nav>
+<section class="hero">
+  <div class="hbg"></div>
+  <svg class="hflower" width="420" height="420" viewBox="0 0 420 420" fill="none"><circle cx="210" cy="210" r="80" stroke="#C87090" stroke-width="1"/><ellipse cx="210" cy="120" rx="30" ry="50" stroke="#C87090" stroke-width="1"/><ellipse cx="210" cy="300" rx="30" ry="50" stroke="#C87090" stroke-width="1"/><ellipse cx="120" cy="210" rx="50" ry="30" stroke="#C87090" stroke-width="1"/><ellipse cx="300" cy="210" rx="50" ry="30" stroke="#C87090" stroke-width="1"/><ellipse cx="153" cy="153" rx="30" ry="50" transform="rotate(-45 153 153)" stroke="#C87090" stroke-width="1"/><ellipse cx="267" cy="267" rx="30" ry="50" transform="rotate(-45 267 267)" stroke="#C87090" stroke-width="1"/><ellipse cx="153" cy="267" rx="30" ry="50" transform="rotate(45 153 267)" stroke="#C87090" stroke-width="1"/><ellipse cx="267" cy="153" rx="30" ry="50" transform="rotate(45 267 153)" stroke="#C87090" stroke-width="1"/></svg>
+  <div class="hc">
+    <div class="hpre">Студия красоты · Рязанский проспект</div>
+    <div class="hdash"></div>
+    <h1>Красивые<br>ногти —<br><em>ваш стиль</em></h1>
+    <p class="hsub">Маникюр, педикюр, наращивание. Индивидуальный подход, безопасные материалы.</p>
+    <div class="btns">
+      <a href="https://t.me/keynastudio" class="ba"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 8l3.5-1.2 7-3.3-3 9.5-2.5-4-1.5 1.2z" stroke="#0C060E" stroke-width="1.2" stroke-linejoin="round"/><path d="M5 8.8l3 3" stroke="#0C060E" stroke-width="1.2" stroke-linecap="round"/></svg>Записаться</a>
+      <a href="#svcs" class="bg">Услуги</a>
+    </div>
+    <div class="hst">
+      <div class="hs"><div class="hsn">5.0</div><div class="hsl">рейтинг</div></div>
+      <div class="hs"><div class="hsn">155+</div><div class="hsl">отзывов</div></div>
+      <div class="hs"><div class="hsn">10–22</div><div class="hsl">ежедневно</div></div>
+    </div>
+  </div>
+</section>
+<section class="svcs" id="svcs">
+  <div class="lbl">Услуги</div><h2 class="hd">Уход за ногтями</h2>
+  <p class="sb">Классика и художественный дизайн. Мастера с опытом, безопасные материалы.</p>
+  <div class="sg">
+    <div class="sc"><div class="si"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4C11 4 9 6 9 8.5c0 2.5 1.5 4.5 4 5.5 2.5-1 4-3 4-5.5C17 6 15 4 13 4z" stroke="#C87090" stroke-width="1.3"/><path d="M13 14v8" stroke="#C87090" stroke-width="1.3" stroke-linecap="round"/><path d="M10 18c0 0 2-2 3-1s3 1 3 1" stroke="#C87090" stroke-width="1.2" stroke-linecap="round"/></svg></div><h3>Маникюр</h3><p>Классический, аппаратный, европейский. Любое покрытие гель-лаком.</p></div>
+    <div class="sc"><div class="si"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 5C9 5 7 8 7 11v8c0 1 1 2 2 2h8c1 0 2-1 2-2v-8c0-3-2-6-6-6z" stroke="#C87090" stroke-width="1.4"/><path d="M10 11h6" stroke="#C87090" stroke-width="1.3" stroke-linecap="round"/></svg></div><h3>Педикюр</h3><p>Аппаратный и классический педикюр с уходовыми процедурами для стоп.</p></div>
+    <div class="sc"><div class="si"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M8 18L13 6l5 12" stroke="#C87090" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 14h6" stroke="#C87090" stroke-width="1.3" stroke-linecap="round"/><circle cx="13" cy="20" r="2" stroke="#C87090" stroke-width="1.3"/></svg></div><h3>Наращивание</h3><p>Гель, акрил, полигель. Укрепление натуральных ногтей и коррекция.</p></div>
+    <div class="sc"><div class="si"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M7 10h12M7 14h9M7 18h6" stroke="#C87090" stroke-width="1.4" stroke-linecap="round"/><rect x="4" y="6" width="18" height="15" rx="2" stroke="#C87090" stroke-width="1.4"/></svg></div><h3>Дизайн</h3><p>Рисунки, стразы, фольга, аквариум, 3D-дизайн — для любого образа.</p></div>
+  </div>
+</section>
+<div class="abw" id="about">
+  <div class="abi">
+    <div>
+      <div class="lbl">О студии</div><h2 class="hd" style="margin-bottom:12px">Внимание<br>к деталям</h2>
+      <p style="color:var(--mu);font-size:.95rem;font-weight:300;margin-bottom:28px;max-width:400px">Студия «Кейна» — для тех, кто ценит качество. Стерильные инструменты, проверенные материалы.</p>
+      <ul class="fl">
+        <li class="ft"><div class="fi"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15 17L10 13.5L5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="#C87090" stroke-width="1.3" stroke-linejoin="round"/></svg></div><div><h4>Рейтинг 5.0 на Яндекс.Картах</h4><p>155+ отзывов без единой негативной</p></div></li>
+        <li class="ft"><div class="fi"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#C87090" stroke-width="1.3"/><path d="M10 6v4l3 2" stroke="#C87090" stroke-width="1.3" stroke-linecap="round"/></svg></div><div><h4>Ежедневно 10:00–22:00</h4><p>Запись в Telegram или по телефону</p></div></li>
+        <li class="ft"><div class="fi"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.5 2 5 4.2 5 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.5-5-5-5z" stroke="#C87090" stroke-width="1.3"/><circle cx="10" cy="7" r="2" stroke="#C87090" stroke-width="1.3"/></svg></div><div><h4>Рязанский проспект, 8А, стр. 14</h4><p>Деловой квартал у Рязанского пр-та</p></div></li>
+      </ul>
+    </div>
+    <div class="avis">
+      <div class="av" style="grid-column:1/-1"><div class="avn">5★</div><div class="avl">рейтинг</div></div>
+      <div class="av"><div class="avn">155+</div><div class="avl">отзывов</div></div>
+      <div class="av"><div class="avn">180</div><div class="avl">оценок</div></div>
+      <div class="av" style="grid-column:1/-1"><div class="avn">10–22</div><div class="avl">без выходных</div></div>
+    </div>
+  </div>
+</div>
+<section class="cta" id="contact">
+  <div class="lbl" style="text-align:center">Запись</div>
+  <h2>Запишитесь <em>онлайн</em></h2>
+  <p>Напишите в Telegram — выберем удобное время и мастера.</p>
+  <a href="https://t.me/keynastudio" class="ba" style="display:inline-flex;margin:0 auto"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 8l3.5-1.2 7-3.3-3 9.5-2.5-4-1.5 1.2z" stroke="#0C060E" stroke-width="1.2" stroke-linejoin="round"/><path d="M5 8.8l3 3" stroke="#0C060E" stroke-width="1.2" stroke-linecap="round"/></svg>Написать в Telegram</a>
+  <div class="cl"><a href="#"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C5 1 3 3 3 5.2c0 3.4 4 7.8 4 7.8S11 8.6 11 5.2C11 3 9 1 7 1z" stroke="#7A5868" stroke-width="1.1"/><circle cx="7" cy="5.2" r="1.8" stroke="#7A5868" stroke-width="1.1"/></svg>Рязанский пр., 8А, стр. 14 · Ежедн. 10–22</a></div>
+</section>
+<footer>
+  <div class="fb">Кейна</div>
+  <div class="finfo">Рязанский пр., 8А · Студия маникюра · Ежедн. 10–22</div>
+  <div class="fc">Демо-версия · vgartg.ru</div>
+</footer>
+</body>
+</html>
