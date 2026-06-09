@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crazy Cart — Картинг и Развлечения · Москва</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow:ital,wght@0,200;0,300;0,400;1,600&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+
+<style>
+:root{
+  --bg:    #080808;
+  --card:  #0f0f0f;
+  --surf:  #141414;
+  --border:rgba(255,255,255,0.07);
+  --yellow:#f5d300;
+  --orange:#ff6b00;
+  --red:   #e02020;
+  --text:  #f0f0f0;
+  --muted: rgba(240,240,240,0.45);
+  --dim:   rgba(240,240,240,0.2);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Barlow',sans-serif;font-weight:300;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 56px;
+  transition:background 0.3s,padding 0.3s;
+}
+nav.s{
+  background:rgba(8,8,8,0.97);
+  padding:16px 56px;
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-family:'Russo One',sans-serif;font-size:1.3rem;letter-spacing:0.04em;
+  color:var(--text);text-decoration:none;display:flex;align-items:center;gap:12px;
+}
+.logo-flag{
+  background:var(--yellow);color:#000;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.1em;padding:4px 8px;
+  clip-path:polygon(0 0,100% 0,88% 50%,100% 100%,0 100%);
+}
+.nv{display:flex;align-items:center;gap:36px;}
+.nv a{
+  font-size:0.65rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color 0.2s;
+}
+.nv a:hover{color:var(--yellow);}
+.nv .cta{
+  background:var(--yellow);color:#000;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+  padding:11px 28px;border-radius:2px;
+  transition:background 0.2s,transform 0.2s;
+}
+.nv .cta:hover{background:#ffea00;transform:translateY(-2px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:var(--bg);
+}
+/* Checkerboard pattern */
+.hero-check{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(45deg,rgba(255,255,255,0.015) 25%,transparent 25%),
+    linear-gradient(-45deg,rgba(255,255,255,0.015) 25%,transparent 25%),
+    linear-gradient(45deg,transparent 75%,rgba(255,255,255,0.015) 75%),
+    linear-gradient(-45deg,transparent 75%,rgba(255,255,255,0.015) 75%);
+  background-size:60px 60px;
+  background-position:0 0,0 30px,30px -30px,-30px 0px;
+}
+/* Speed lines */
+.speed-lines{
+  position:absolute;top:50%;left:60%;transform:translateY(-50%);
+  width:500px;height:500px;opacity:0.06;pointer-events:none;
+}
+.speed-line{
+  position:absolute;top:50%;left:50%;
+  height:2px;background:linear-gradient(to left,transparent,var(--yellow));
+  transform-origin:left center;
+}
+/* Radial glow */
+.hero-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:800px;height:400px;
+  background:radial-gradient(ellipse,rgba(245,211,0,0.07) 0%,transparent 70%);
+  pointer-events:none;
+  animation:pulse 4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.1);}}
+
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 56px;max-width:1200px;width:100%;margin:0 auto;
+  padding-top:100px;
+}
+.h-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--yellow);border:1px solid rgba(245,211,0,0.3);
+  padding:7px 16px;border-radius:2px;margin-bottom:32px;
+  animation:blastIn 0.8s 0.1s both;
+}
+h1.h-h1{
+  font-family:'Russo One',sans-serif;
+  font-size:clamp(4rem,10vw,10rem);line-height:0.9;
+  margin-bottom:12px;
+  animation:blastIn 0.8s 0.2s both;
+}
+h1.h-h1 .yellow{
+  color:var(--yellow);
+  text-shadow:0 0 60px rgba(245,211,0,0.3);
+}
+h1.h-h1 .stroke{
+  -webkit-text-stroke:2px rgba(255,255,255,0.2);color:transparent;
+}
+.h-sub-row{
+  display:flex;align-items:center;gap:32px;margin:32px 0 48px;
+  animation:blastIn 0.8s 0.35s both;
+}
+.h-sub{
+  font-size:1rem;font-weight:300;line-height:1.7;
+  color:var(--muted);max-width:500px;
+}
+.h-rating{
+  display:flex;flex-direction:column;gap:4px;
+  padding-left:32px;border-left:1px solid var(--border);
+  white-space:nowrap;
+}
+.h-rating .stars{color:var(--yellow);font-size:1rem;}
+.h-rating .cnt{font-size:0.7rem;color:var(--dim);}
+.h-btns{
+  display:flex;gap:14px;flex-wrap:wrap;
+  animation:blastIn 0.8s 0.45s both;
+}
+.btn-y{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;
+  text-decoration:none;color:#000;
+  background:var(--yellow);padding:16px 40px;border-radius:2px;
+  transition:background 0.2s,transform 0.2s;
+  box-shadow:0 8px 32px rgba(245,211,0,0.25);
+}
+.btn-y:hover{background:#ffea00;transform:translateY(-2px);}
+.btn-w{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;
+  text-decoration:none;color:var(--text);
+  border:1px solid var(--border);padding:16px 40px;border-radius:2px;
+  transition:border-color 0.2s;
+}
+.btn-w:hover{border-color:rgba(255,255,255,0.3);}
+
+@keyframes blastIn{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--yellow);padding:14px 0;overflow:hidden;
+}
+.ticker-track{
+  display:flex;width:max-content;
+  animation:tick 20s linear infinite;
+}
+.ticker-item{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:#000;white-space:nowrap;padding:0 40px;
+  display:flex;align-items:center;gap:40px;
+}
+.ticker-item::after{content:'🏁';font-size:1rem;}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── OFFERS ── */
+.offers{padding:100px 56px;background:var(--surf);}
+.off-head{text-align:center;margin-bottom:56px;}
+.off-head span{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--yellow);display:block;margin-bottom:14px;
+}
+.off-head h2{
+  font-family:'Russo One',sans-serif;
+  font-size:clamp(2rem,5vw,4rem);color:var(--text);
+}
+.off-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  max-width:1100px;margin:0 auto;
+}
+.off-card{
+  background:var(--card);padding:52px 40px;
+  position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.off-card:hover{background:#181818;}
+.off-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,var(--yellow),var(--orange));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s;
+}
+.off-card:hover::before{transform:scaleX(1);}
+.off-num{
+  font-family:'Russo One',sans-serif;font-size:5rem;
+  color:rgba(245,211,0,0.07);position:absolute;top:16px;right:24px;
+  line-height:1;
+}
+.off-icon{font-size:2.5rem;display:block;margin-bottom:24px;}
+.off-card h3{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:1.6rem;color:var(--text);margin-bottom:14px;
+  letter-spacing:0.02em;
+}
+.off-card p{font-size:0.9rem;font-weight:300;line-height:1.7;color:var(--muted);}
+.off-price{
+  display:inline-block;margin-top:24px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:1.1rem;color:var(--yellow);letter-spacing:0.04em;
+}
+
+/* ── FEATURES ── */
+.features{padding:100px 56px;}
+.feat-grid{
+  display:grid;grid-template-columns:2fr 3fr;gap:64px;
+  max-width:1100px;margin:0 auto;align-items:start;
+}
+.feat-left h2{
+  font-family:'Russo One',sans-serif;
+  font-size:clamp(2rem,4vw,3.2rem);color:var(--text);
+  line-height:1.1;margin-bottom:24px;
+}
+.feat-left h2 .yel{color:var(--yellow);}
+.feat-left p{font-size:0.95rem;font-weight:300;line-height:1.75;color:var(--muted);}
+.feat-list{display:flex;flex-direction:column;gap:1px;}
+.feat-item{
+  background:var(--surf);padding:28px 32px;
+  display:flex;align-items:center;gap:20px;
+  border:1px solid var(--border);border-top:none;
+  transition:background 0.2s;
+}
+.feat-item:first-child{border-top:1px solid var(--border);}
+.feat-item:hover{background:var(--card);}
+.feat-item .ico{font-size:1.5rem;width:32px;text-align:center;flex-shrink:0;}
+.feat-item h4{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:1.05rem;color:var(--text);margin-bottom:4px;
+}
+.feat-item p{font-size:0.82rem;font-weight:300;color:var(--muted);}
+
+/* ── BOOKING ── */
+.booking{
+  padding:100px 56px;
+  background:var(--surf);border-top:1px solid var(--border);
+}
+.b-wrap{max-width:900px;margin:0 auto;}
+.b-wrap > span{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--yellow);display:block;margin-bottom:16px;text-align:center;
+}
+.b-wrap h2{
+  font-family:'Russo One',sans-serif;
+  font-size:clamp(2rem,5vw,3.5rem);color:var(--text);
+  text-align:center;margin-bottom:48px;line-height:1;
+}
+.b-form{background:var(--card);border:1px solid var(--border);padding:48px;}
+.fg{margin-bottom:20px;}
+.fg label{
+  display:block;font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--yellow);margin-bottom:8px;
+}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:var(--bg);
+  border:1px solid var(--border);border-radius:2px;
+  padding:13px 16px;color:var(--text);
+  font-family:'Barlow',sans-serif;font-weight:300;font-size:0.9rem;
+  outline:none;transition:border-color 0.2s;appearance:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(245,211,0,0.5);}
+.fg textarea{resize:vertical;min-height:80px;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.btn-book{
+  width:100%;margin-top:8px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:#000;background:var(--yellow);
+  border:none;padding:18px;border-radius:2px;cursor:pointer;
+  transition:background 0.2s,transform 0.2s;
+  box-shadow:0 8px 32px rgba(245,211,0,0.2);
+}
+.btn-book:hover{background:#ffea00;transform:translateY(-2px);}
+.b-contacts{
+  display:flex;gap:32px;justify-content:center;margin-top:32px;flex-wrap:wrap;
+}
+.bc{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:300;color:var(--muted);}
+.bc a{color:var(--yellow);text-decoration:none;}
+.bc a:hover{text-decoration:underline;}
+
+/* ── FOOTER ── */
+footer{
+  background:#050505;padding:48px 56px;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.f-logo{
+  font-family:'Russo One',sans-serif;font-size:1.2rem;
+  color:var(--text);display:flex;align-items:center;gap:12px;
+}
+.f-logo .flag{
+  background:var(--yellow);color:#000;
+  font-size:0.55rem;font-weight:700;letter-spacing:0.1em;padding:3px 8px;
+  clip-path:polygon(0 0,100% 0,88% 50%,100% 100%,0 100%);
+}
+footer p{font-size:0.65rem;font-weight:300;color:var(--dim);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:18px 24px;}
+  .nv a:not(.cta){display:none;}
+  nav.s{padding:14px 24px;}
+  .hero-content{padding:0 24px;padding-top:80px;}
+  .offers,.features,.booking{padding:80px 24px;}
+  .off-grid{grid-template-columns:1fr;}
+  .feat-grid{grid-template-columns:1fr;gap:40px;}
+  .fg-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:32px 24px;}
+}
+
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before,html::after,body::before,body::after{
+  content:"vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;
+  position:fixed !important;top:50% !important;left:50% !important;
+  width:300vmax !important;height:auto !important;
+  margin:0 !important;padding:0 !important;
+  display:block !important;visibility:visible !important;opacity:.13 !important;
+  text-align:center !important;
+  font-family:"Unbounded","Onest",system-ui,sans-serif !important;
+  font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;
+  line-height:1 !important;letter-spacing:.35em !important;
+  text-transform:lowercase !important;color:#FFE9A8 !important;
+  background:transparent !important;white-space:nowrap !important;
+  overflow:visible !important;pointer-events:none !important;
+  user-select:none !important;-webkit-user-select:none !important;
+  z-index:2147483646 !important;transform-origin:center center !important;
+  mix-blend-mode:screen !important;text-shadow:none !important;
+  clip-path:none !important;filter:none !important;
+}
+html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important;}
+html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important;}
+body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important;}
+body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important;}
+@media print{
+  html::before,html::after,body::before,body::after{
+    opacity:.35 !important;color:#FFD24A !important;mix-blend-mode:normal !important;
+  }
+}
+/* === END DEMO WATERMARK === */
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo"><span class="logo-flag">CRAZY</span> CART</a>
+  <div class="nv">
+    <a href="#offers">Пакеты</a>
+    <a href="#booking">Забронировать</a>
+    <a href="#booking" class="cta">Забронировать</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-check"></div>
+  <div class="hero-glow"></div>
+  <div class="speed-lines" id="speedLines"></div>
+  <div class="hero-content">
+    <div class="h-tag">🏁 Картинг · Праздники · Москва</div>
+    <h1 class="h-h1">
+      <span class="yellow">CRAZY</span><br>
+      <span class="stroke">CART</span>
+    </h1>
+    <div class="h-sub-row">
+      <p class="h-sub">Профессиональная трасса, детские праздники под ключ и настоящий заряд адреналина в Москве на Кировоградской ул., 13А.</p>
+      <div class="h-rating">
+        <span class="stars">★★★★★</span>
+        <strong style="color:var(--yellow);font-size:1.4rem;font-family:'Russo One'">5.0</strong>
+        <span class="cnt">494 отзыва · 543 оценки</span>
+      </div>
+    </div>
+    <div class="h-btns">
+      <a href="#booking" class="btn-y">Забронировать гонку</a>
+      <a href="#offers" class="btn-w">Смотреть пакеты</a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Профессиональный картинг</div>
+    <div class="ticker-item">Детские праздники</div>
+    <div class="ticker-item">Корпоративы</div>
+    <div class="ticker-item">Развлекательный центр</div>
+    <div class="ticker-item">Рейтинг 5.0★</div>
+    <div class="ticker-item">Москва · ЮАО</div>
+    <div class="ticker-item">Профессиональный картинг</div>
+    <div class="ticker-item">Детские праздники</div>
+    <div class="ticker-item">Корпоративы</div>
+    <div class="ticker-item">Развлекательный центр</div>
+    <div class="ticker-item">Рейтинг 5.0★</div>
+    <div class="ticker-item">Москва · ЮАО</div>
+  </div>
+</div>
+
+<section class="offers" id="offers">
+  <div class="off-head">
+    <span>Пакеты и цены</span>
+    <h2>ВЫБЕРИ СВОЙ ФОРМАТ</h2>
+  </div>
+  <div class="off-grid">
+    <div class="off-card">
+      <span class="off-num">01</span>
+      <span class="off-icon">🏎</span>
+      <h3>Гонка для взрослых</h3>
+      <p>Профессиональные карты, таймер, личный результат. Индивидуальные заезды и чемпионаты с друзьями.</p>
+      <span class="off-price">от 1 500 ₽ / 10 мин</span>
+    </div>
+    <div class="off-card">
+      <span class="off-num">02</span>
+      <span class="off-icon">🎉</span>
+      <h3>Детский праздник</h3>
+      <p>Аниматор, картинг для детей от 7 лет, зона отдыха для родителей, торт и украшения. Всё включено.</p>
+      <span class="off-price">от 8 000 ₽ / 2 часа</span>
+    </div>
+    <div class="off-card">
+      <span class="off-num">03</span>
+      <span class="off-icon">🏢</span>
+      <h3>Корпоратив</h3>
+      <p>Командные гонки, турнирная таблица, розыгрыши и банкетная зона. Незабываемый тимбилдинг.</p>
+      <span class="off-price">от 25 000 ₽ / группа</span>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="feat-grid">
+    <div class="feat-left">
+      <h2>ПОЧЕМУ<br><span class="yel">CRAZY<br>CART?</span></h2>
+      <p>Мы делаем скорость доступной каждому — от маленьких гонщиков до профессионалов. Безопасность + адреналин в одном флаконе.</p>
+    </div>
+    <div class="feat-list">
+      <div class="feat-item"><div class="ico">🏁</div><div><h4>Профессиональная трасса</h4><p>Сложная трасса с поворотами, шиканами и прямыми — как у взрослых.</p></div></div>
+      <div class="feat-item"><div class="ico">⚡</div><div><h4>Электрические карты</h4><p>Тихие, мощные и экологичные карты для детей и взрослых.</p></div></div>
+      <div class="feat-item"><div class="ico">🛡</div><div><h4>Полная безопасность</h4><p>Шлемы, защита, инструктаж и профессиональные маршалы на трассе.</p></div></div>
+      <div class="feat-item"><div class="ico">📸</div><div><h4>Фото и видео</h4><p>Автоматические камеры фиксируют каждый заезд. Фото в подарок.</p></div></div>
+      <div class="feat-item"><div class="ico">🍕</div><div><h4>Кафе и отдых</h4><p>Зона отдыха, кафе, игровые автоматы. Можно провести целый день.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="b-wrap">
+    <span>Бронирование</span>
+    <h2>ПОЕХАЛИ!</h2>
+    <div class="b-form">
+      <div class="fg-row">
+        <div class="fg"><label>Имя</label><input type="text" placeholder="Ваше имя"></div>
+        <div class="fg"><label>Телефон</label><input type="tel" placeholder="+7 (___) ___-__-__"></div>
+      </div>
+      <div class="fg">
+        <label>Формат</label>
+        <select>
+          <option>Гонка для взрослых</option>
+          <option>Детский праздник</option>
+          <option>Корпоратив</option>
+          <option>Просто покататься</option>
+        </select>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Дата</label><input type="date"></div>
+        <div class="fg"><label>Участников</label><input type="number" placeholder="5"></div>
+      </div>
+      <div class="fg"><label>Пожелания</label><textarea placeholder="Возраст детей, особые пожелания, время..."></textarea></div>
+      <button class="btn-book">ЗАБРОНИРОВАТЬ ТРАССУ 🏁</button>
+    </div>
+    <div class="b-contacts">
+      <div class="bc">📍 <span>Кировоградская ул., 13А, Москва</span></div>
+      <div class="bc">✈️ <a href="https://t.me/+79166509645" target="_blank">Telegram</a></div>
+      <div class="bc">🕐 <span>Ежедневно, 10:00–22:00</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><span class="flag">CRAZY</span>CART</div>
+  <p>© 2025 Crazy Cart · Картинг и Развлечения · Москва</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',scrollY>60));
+
+// Speed lines
+const sl = document.getElementById('speedLines');
+for(let i=0;i<16;i++){
+  const d=document.createElement('div');
+  d.className='speed-line';
+  const angle=((i/16)*360);
+  const len=80+Math.random()*200;
+  d.style.cssText=`width:${len}px;transform:rotate(${angle}deg);opacity:${0.3+Math.random()*0.7};`;
+  sl.appendChild(d);
+}
+</script>
+</body>
+</html>

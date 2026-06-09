@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мархал — Кафе и Банкетный зал · Москва</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --burgundy-deep: #1a0608;
+  --burgundy: #3d0c10;
+  --burgundy-mid: #6b1820;
+  --burgundy-light: #9b2c38;
+  --gold: #c9963a;
+  --gold-light: #e8c96d;
+  --gold-pale: #f0dfa0;
+  --cream: #f5ede0;
+  --ivory: #fdf8f0;
+  --text-dim: rgba(245,237,224,0.55);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--burgundy-deep);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 48px;
+  background: linear-gradient(to bottom, rgba(26,6,8,0.95) 0%, transparent 100%);
+  transition: background 0.4s;
+}
+nav.scrolled { background: rgba(26,6,8,0.97); }
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--gold-light);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--cream); text-decoration: none;
+  opacity: 0.75; transition: opacity 0.2s, color 0.2s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold-light); }
+.nav-cta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold-light); text-decoration: none;
+  border: 1px solid var(--gold);
+  padding: 10px 24px; border-radius: 1px;
+  transition: background 0.25s, color 0.25s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--burgundy-deep); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(107,24,32,0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 80% 10%, rgba(201,150,58,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 90%, rgba(201,150,58,0.08) 0%, transparent 60%),
+    linear-gradient(165deg, #3d0c10 0%, #1a0608 45%, #0d0304 100%);
+}
+/* Decorative candle-glow circles */
+.hero-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle 180px at 25% 70%, rgba(201,150,58,0.07) 0%, transparent 70%),
+    radial-gradient(circle 120px at 75% 30%, rgba(201,150,58,0.06) 0%, transparent 70%);
+}
+/* Subtle noise texture */
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; padding: 0 24px;
+  animation: fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem; font-weight: 400;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.9;
+  margin-bottom: 28px;
+  animation: fadeUp 1.2s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4.5rem, 12vw, 9rem);
+  font-weight: 700; line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--ivory);
+  animation: fadeUp 1.2s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+  display: block;
+}
+.hero-divider {
+  width: 80px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 36px auto;
+  animation: fadeUp 1.2s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-sub {
+  font-size: 1.3rem; font-weight: 300;
+  letter-spacing: 0.04em; line-height: 1.5;
+  color: var(--text-dim);
+  max-width: 480px; margin: 0 auto 48px;
+  animation: fadeUp 1.2s 0.35s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-rating {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.12em;
+  color: var(--gold-pale); margin-bottom: 48px;
+  animation: fadeUp 1.2s 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-rating .stars { color: var(--gold); font-size: 0.9rem; }
+.hero-btns {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 1.2s 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+.btn-primary {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  text-decoration: none; color: var(--burgundy-deep);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  padding: 16px 40px; border-radius: 1px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 32px rgba(201,150,58,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,150,58,0.4); }
+.btn-outline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  text-decoration: none; color: var(--cream);
+  border: 1px solid rgba(245,237,224,0.3);
+  padding: 16px 40px; border-radius: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  animation: fadeUp 1.2s 0.8s both;
+}
+.hero-scroll span {
+  font-family: 'Montserrat', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim);
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.4; transform: scaleY(0.7); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ── SECTION BASE ── */
+section { padding: 100px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px; display: block;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600; line-height: 1.15;
+  color: var(--ivory);
+}
+.section-title em { font-style: italic; color: var(--gold-light); }
+
+/* ── ABOUT ── */
+.about { background: var(--burgundy-deep); }
+.about-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-visual {
+  position: relative; height: 480px;
+}
+.about-plate {
+  position: absolute; border-radius: 2px; overflow: hidden;
+}
+.about-plate-main {
+  inset: 0;
+  background: linear-gradient(145deg, var(--burgundy) 0%, var(--burgundy-mid) 50%, #2a080c 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-plate-main::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9963a' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.plate-icon {
+  font-size: 5rem; opacity: 0.15;
+  position: relative; z-index: 1;
+}
+.about-plate-accent {
+  width: 200px; height: 200px;
+  bottom: -24px; right: -24px;
+  background: linear-gradient(135deg, rgba(201,150,58,0.18), rgba(201,150,58,0.06));
+  border: 1px solid rgba(201,150,58,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px;
+}
+.accent-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; font-weight: 700; color: var(--gold-light);
+  line-height: 1;
+}
+.accent-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); text-align: center; line-height: 1.4;
+}
+.about-text { padding: 20px 0; }
+.about-text p {
+  font-size: 1.2rem; font-weight: 300; line-height: 1.75;
+  color: var(--text-dim); margin-top: 28px; margin-bottom: 36px;
+}
+.about-stats {
+  display: flex; gap: 40px; margin-top: 40px;
+  padding-top: 40px; border-top: 1px solid rgba(201,150,58,0.15);
+}
+.stat-item { }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 700; color: var(--gold-light);
+  line-height: 1;
+}
+.stat-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-dim); margin-top: 6px;
+}
+
+/* ── SERVICES ── */
+.services {
+  background: linear-gradient(160deg, #0d0304 0%, var(--burgundy-deep) 100%);
+  position: relative; overflow: hidden;
+}
+.services::before {
+  content: ''; position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,24,32,0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+.services-header { text-align: center; max-width: 600px; margin: 0 auto 70px; }
+.services-header p {
+  margin-top: 20px; font-size: 1.2rem; font-weight: 300;
+  color: var(--text-dim); line-height: 1.6;
+}
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.service-card {
+  background: linear-gradient(145deg, rgba(61,12,16,0.6) 0%, rgba(26,6,8,0.8) 100%);
+  border: 1px solid rgba(201,150,58,0.15);
+  padding: 44px 32px; border-radius: 2px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.service-card:hover { border-color: rgba(201,150,58,0.4); transform: translateY(-4px); }
+.service-card:hover::before { opacity: 1; }
+.service-icon { font-size: 2.2rem; margin-bottom: 24px; display: block; }
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 600; color: var(--ivory);
+  margin-bottom: 16px;
+}
+.service-card p {
+  font-size: 1rem; font-weight: 300; line-height: 1.7;
+  color: var(--text-dim);
+}
+.service-card .service-tag {
+  display: inline-block; margin-top: 24px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(201,150,58,0.3);
+  padding: 5px 12px; border-radius: 1px;
+}
+
+/* ── WHY US ── */
+.why { background: var(--burgundy-deep); }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 60px; }
+.why-list { display: flex; flex-direction: column; gap: 0; }
+.why-item {
+  display: flex; gap: 24px; padding: 32px 0;
+  border-bottom: 1px solid rgba(201,150,58,0.1);
+  transition: background 0.2s;
+}
+.why-item:first-child { border-top: 1px solid rgba(201,150,58,0.1); }
+.why-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-style: italic; color: var(--gold);
+  min-width: 28px; padding-top: 2px;
+}
+.why-item h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--ivory);
+  margin-bottom: 8px;
+}
+.why-item p {
+  font-size: 1rem; font-weight: 300; line-height: 1.65;
+  color: var(--text-dim);
+}
+.why-visual {
+  background: linear-gradient(145deg, var(--burgundy) 0%, #2a080c 100%);
+  border: 1px solid rgba(201,150,58,0.15);
+  border-radius: 2px; padding: 56px 48px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.why-visual::before {
+  content: ''; position: absolute; bottom: -60px; right: -60px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,150,58,0.1) 0%, transparent 70%);
+}
+.why-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-style: italic; line-height: 1.6;
+  color: var(--cream); position: relative; z-index: 1;
+}
+.why-quote::before { content: '\201C'; color: var(--gold); font-size: 4rem; line-height: 0; vertical-align: -0.5em; margin-right: 4px; }
+.why-cta {
+  margin-top: 48px; position: relative; z-index: 1;
+}
+.why-cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; color: var(--ivory); margin-bottom: 20px;
+}
+.rating-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem; font-weight: 700; color: var(--gold-light);
+  line-height: 1;
+}
+.rating-stars { color: var(--gold); font-size: 1.2rem; margin: 10px 0; display: block; }
+.rating-count {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-dim);
+}
+
+/* ── BOOKING ── */
+.booking {
+  background: linear-gradient(160deg, #0d0304 0%, var(--burgundy) 100%);
+  position: relative; overflow: hidden;
+}
+.booking::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,150,58,0.08) 0%, transparent 70%);
+}
+.booking-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+}
+.booking-info { padding-top: 12px; }
+.booking-info p {
+  font-size: 1.15rem; font-weight: 300; line-height: 1.75;
+  color: var(--text-dim); margin: 24px 0 40px;
+}
+.booking-contacts { display: flex; flex-direction: column; gap: 20px; }
+.contact-item {
+  display: flex; align-items: center; gap: 16px;
+  font-size: 1.1rem; color: var(--cream);
+}
+.contact-icon { font-size: 1.2rem; width: 24px; text-align: center; }
+.contact-link { color: var(--gold-light); text-decoration: none; }
+.contact-link:hover { text-decoration: underline; }
+
+.booking-form {
+  background: rgba(61,12,16,0.4);
+  border: 1px solid rgba(201,150,58,0.18);
+  border-radius: 2px; padding: 48px 40px;
+}
+.booking-form h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; color: var(--ivory); margin-bottom: 32px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: rgba(26,6,8,0.6);
+  border: 1px solid rgba(201,150,58,0.2);
+  border-radius: 1px; padding: 14px 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; color: var(--cream);
+  outline: none; transition: border-color 0.2s;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-submit {
+  width: 100%; margin-top: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--burgundy-deep);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  border: none; padding: 16px; border-radius: 1px;
+  cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 6px 24px rgba(201,150,58,0.25);
+}
+.form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0a0203; border-top: 1px solid rgba(201,150,58,0.12);
+  padding: 60px 24px 40px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 700; color: var(--gold-light);
+  letter-spacing: 0.08em; display: block; margin-bottom: 16px;
+}
+footer p {
+  font-size: 0.95rem; color: var(--text-dim); margin-bottom: 8px;
+}
+.footer-divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 28px auto;
+}
+.footer-bottom {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(245,237,224,0.25);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-visual { height: 280px; }
+  .about-plate-accent { width: 140px; height: 140px; right: -12px; bottom: -12px; }
+  .accent-number { font-size: 2.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+  .form-row { grid-template-columns: 1fr; }
+  .about-stats { gap: 24px; }
+}
+
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before, html::after,
+body::before, body::after{
+  content: "vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 300vmax !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: .13 !important;
+  text-align: center !important;
+  font-family: "Unbounded", "Onest", system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(26px, 2.8vmax, 44px) !important;
+  line-height: 1 !important;
+  letter-spacing: .35em !important;
+  text-transform: lowercase !important;
+  color: #FFE9A8 !important;
+  background: transparent !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  z-index: 2147483646 !important;
+  transform-origin: center center !important;
+  mix-blend-mode: screen !important;
+  text-shadow: none !important;
+  clip-path: none !important;
+  filter: none !important;
+}
+html::before{ transform: translate(-50%, -50%) rotate(-45deg) translate(0, -34vmax) !important; }
+html::after { transform: translate(-50%, -50%) rotate(-45deg) translate(0, -11vmax) !important; }
+body::before{ transform: translate(-50%, -50%) rotate(-45deg) translate(0,  11vmax) !important; }
+body::after { transform: translate(-50%, -50%) rotate(-45deg) translate(0,  34vmax) !important; }
+@media print{
+  html::before, html::after, body::before, body::after{
+    opacity: .35 !important;
+    color: #FFD24A !important;
+    mix-blend-mode: normal !important;
+  }
+}
+/* === END DEMO WATERMARK === */
+</style>
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">МАРХАЛ</a>
+  <ul class="nav-links">
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#services">Залы и услуги</a></li>
+    <li><a href="#booking">Забронировать</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Бронирование</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Москва · Ангарская ул., 1 · С 2015 года</p>
+    <h1 class="hero-title">
+      МАР<em>ХАЛ</em>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Кафе, банкетный зал и живые эмоции в&nbsp;сердце Москвы</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span>4.9 · 5440 оценок · 2184 отзыва</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">Забронировать стол</a>
+      <a href="#services" class="btn-outline">Наши залы</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Листайте</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-plate about-plate-main">
+          <div class="plate-icon">🕯</div>
+        </div>
+        <div class="about-plate about-plate-accent">
+          <span class="accent-number">4.9</span>
+          <span class="accent-label">Рейтинг<br>на Я.Картах</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">О нас</span>
+        <h2 class="section-title">Место, где <em>рождаются</em> воспоминания</h2>
+        <p>Мархал — это больше, чем ресторан. Здесь каждый праздник становится историей, которую захочется рассказывать снова. Уютная атмосфера, живая музыка, авторская кухня и безупречный сервис.</p>
+        <a href="#booking" class="btn-primary">Забронировать</a>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">2184</div>
+            <div class="stat-desc">Отзывов</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">9+</div>
+            <div class="stat-desc">Лет работы</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">300+</div>
+            <div class="stat-desc">Гостей</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">Залы и форматы</span>
+      <h2 class="section-title">Пространство для <em>каждого</em> случая</h2>
+      <p>От тихого делового обеда до грандиозного банкета на 200 персон — у нас есть зал и формат для любого события.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🥂</span>
+        <h3>Банкетный зал</h3>
+        <p>Торжества, свадьбы, юбилеи и корпоративы. Вместимость до 200 гостей. Живая музыка и DJ по запросу, декор под ключ.</p>
+        <span class="service-tag">до 200 гостей</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎤</span>
+        <h3>Караоке-клуб</h3>
+        <p>Отдельные VIP-комнаты и общий зал с профессиональным звуком. Более 50 000 треков. Идеально для компании друзей и праздника.</p>
+        <span class="service-tag">VIP-комнаты</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">☕</span>
+        <h3>Кафе и бизнес-ланч</h3>
+        <p>Ежедневно с 10:00. Комплексные обеды, завтраки, авторское меню — для тех, кто ценит вкус и время.</p>
+        <span class="service-tag">Пн–вс 10:00–23:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="container">
+    <span class="section-label">Почему выбирают нас</span>
+    <h2 class="section-title">Не просто ресторан — <em>событие</em></h2>
+    <div class="why-grid">
+      <div class="why-list">
+        <div class="why-item">
+          <span class="why-num">I</span>
+          <div>
+            <h4>Живая музыка и DJ</h4>
+            <p>Профессиональные музыканты и DJ с индивидуальной программой для вашего мероприятия. Атмосфера, которую не забыть.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-num">II</span>
+          <div>
+            <h4>Авторская кухня</h4>
+            <p>Меню разработано шеф-поваром с учётом сезонных продуктов. Русская классика и авторские блюда в одном месте.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-num">III</span>
+          <div>
+            <h4>Организация под ключ</h4>
+            <p>Декор, кейтеринг, ведущий, фотограф — мы берём на себя все детали, чтобы вы наслаждались праздником.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-num">IV</span>
+          <div>
+            <h4>Удобное расположение</h4>
+            <p>Ангарская ул., 1 — 5 минут от метро. Собственная парковка. В двух шагах от природных парков Москвы.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <p class="why-quote">Лучший ресторан в районе! Были на корпоративе — всё на высшем уровне. Живая музыка, вкусная еда, внимательный персонал.</p>
+        <div class="why-cta">
+          <div class="rating-big">4.9</div>
+          <span class="rating-stars">★★★★★</span>
+          <p class="rating-count">5 440 оценок · 2 184 отзыва · Яндекс Карты</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="container">
+    <div class="booking-inner">
+      <div class="booking-info">
+        <span class="section-label">Забронировать</span>
+        <h2 class="section-title">Начните <em>планировать</em> свой праздник</h2>
+        <p>Оставьте заявку — наш менеджер свяжется с вами в течение часа, уточнит все детали и предложит лучший вариант для вашего события.</p>
+        <div class="booking-contacts">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>Ангарская ул., 1, корп. 2, Москва</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🕐</span>
+            <span>Ежедневно, 10:00–23:00</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✈️</span>
+            <a href="https://t.me/marhal_cafe" class="contact-link" target="_blank">Telegram: @marhal_cafe</a>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <h3>Заявка на мероприятие</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ваше имя</label>
+            <input type="text" placeholder="Иван Петров">
+          </div>
+          <div class="form-group">
+            <label>Телефон</label>
+            <input type="tel" placeholder="+7 (___) ___-__-__">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Тип мероприятия</label>
+          <select>
+            <option>Банкет / День рождения</option>
+            <option>Корпоратив</option>
+            <option>Свадьба</option>
+            <option>Деловой обед</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Дата</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>Гостей</label>
+            <input type="number" placeholder="20">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Комментарий</label>
+          <textarea placeholder="Расскажите о ваших пожеланиях..."></textarea>
+        </div>
+        <button class="form-submit" type="button">Отправить заявку</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">МАРХАЛ</span>
+  <p>Ангарская ул., 1, корп. 2, Москва</p>
+  <p>Ежедневно 10:00 – 23:00</p>
+  <div class="footer-divider"></div>
+  <p class="footer-bottom">© 2025 Мархал · Кафе и Банкетный зал</p>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+</body>
+</html>

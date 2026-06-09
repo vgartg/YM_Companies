@@ -1,0 +1,101 @@
+/* === DEMO WATERMARK GUARD === */
+(function () {
+  if (window.__vgrInit) return;
+  window.__vgrInit = 1;
+
+  var T = ["vgar", "tg.", "ru"].join("");
+  var REP = "";
+  for (var i = 0; i < 16; i++) REP += T + " · ";
+
+  var CSS = [
+    'html::before,html::after,body::before,body::after{',
+      'content:"', REP, '" !important;',
+      'position:fixed !important;top:50% !important;left:50% !important;',
+      'width:300vmax !important;height:auto !important;',
+      'margin:0 !important;padding:0 !important;',
+      'display:block !important;visibility:visible !important;opacity:.13 !important;',
+      'text-align:center !important;',
+      'font-family:"Unbounded","Onest",system-ui,sans-serif !important;',
+      'font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;',
+      'line-height:1 !important;letter-spacing:.35em !important;',
+      'text-transform:lowercase !important;color:#FFE9A8 !important;',
+      'background:transparent !important;white-space:nowrap !important;',
+      'overflow:visible !important;pointer-events:none !important;',
+      'user-select:none !important;-webkit-user-select:none !important;',
+      'z-index:2147483646 !important;transform-origin:center center !important;',
+      'mix-blend-mode:screen !important;text-shadow:none !important;',
+      'clip-path:none !important;filter:none !important;',
+    '}',
+    'html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important}',
+    'html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important}',
+    'body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important}',
+    'body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important}'
+  ].join('');
+
+  var styleEl = null;
+  var rand = Math.random().toString(36).slice(2, 10);
+
+  function inject() {
+    if (styleEl && styleEl.isConnected) {
+      if (document.head && document.head.lastElementChild !== styleEl) {
+        document.head.appendChild(styleEl);
+      }
+      if (styleEl.textContent !== CSS) styleEl.textContent = CSS;
+      return;
+    }
+    styleEl = document.createElement('style');
+    styleEl.setAttribute('data-x', rand);
+    styleEl.textContent = CSS;
+    (document.head || document.documentElement).appendChild(styleEl);
+  }
+
+  function pseudoOK(el, pseudo) {
+    try {
+      var cs = window.getComputedStyle(el, pseudo);
+      if (!cs) return false;
+      if (cs.display === 'none') return false;
+      if (cs.visibility === 'hidden') return false;
+      if (parseFloat(cs.opacity) < 0.05) return false;
+      if (cs.content.indexOf(T) === -1) return false;
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function verify() {
+    inject();
+    var html = document.documentElement;
+    var body = document.body;
+    if (!body) return;
+    if (html.style && (html.style.display === 'none' || html.style.visibility === 'hidden')) {
+      html.style.removeProperty('display');
+      html.style.removeProperty('visibility');
+    }
+    if (body.style && (body.style.display === 'none' || body.style.visibility === 'hidden')) {
+      body.style.removeProperty('display');
+      body.style.removeProperty('visibility');
+    }
+    var bad = !pseudoOK(html,'::before')||!pseudoOK(html,'::after')||!pseudoOK(body,'::before')||!pseudoOK(body,'::after');
+    if (bad) {
+      if (styleEl && styleEl.parentNode) styleEl.parentNode.removeChild(styleEl);
+      styleEl = null;
+      inject();
+    }
+  }
+
+  function boot() {
+    verify();
+    var mo = new MutationObserver(function () { verify(); });
+    if (document.head) mo.observe(document.head, { childList: true, subtree: true });
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['style','class'] });
+    if (document.body) mo.observe(document.body, { attributes: true, attributeFilter: ['style','class'] });
+    setInterval(verify, 1500);
+    document.addEventListener('visibilitychange', verify);
+    window.addEventListener('focus', verify);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+})();
