@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лаззат — чайхана и восточная кухня</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+<style>
+:root{--bg:#0A0806;--bg2:#160E08;--bg3:#201608;--gold:#C9882A;--gold2:#E5A845;--cream:#F2E0C0;--muted:#7A6040;--border:rgba(201,136,42,.14);--border2:rgba(201,136,42,.34)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Montserrat',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 52px;background:rgba(10,8,6,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:12px;font-family:'Scheherazade New',serif;font-size:1.3rem;color:var(--gold)}
+.nav-brand img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border2)}
+.nav-open{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:rgba(201,136,42,.1);border:1px solid var(--border2);padding:5px 14px;border-radius:20px;display:flex;align-items:center;gap:6px}
+.open-dot{width:5px;height:5px;border-radius:50%;background:var(--gold2);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 52px 80px;gap:60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 0% 50%,rgba(201,136,42,.1) 0%,transparent 55%)}
+.hero-ornament{position:absolute;top:50%;right:0;transform:translateY(-50%);width:45%;height:80%;background:radial-gradient(ellipse at center,rgba(201,136,42,.06) 0%,transparent 70%);pointer-events:none}
+.hero-left{position:relative}
+.hero-tag{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Scheherazade New',serif;font-size:clamp(4rem,9vw,8rem);line-height:.88;margin-bottom:16px}
+.hero h1 span{color:var(--gold);display:block}
+.hero-sub{font-family:'Scheherazade New',serif;font-size:1.3rem;color:rgba(201,136,42,.5);margin-bottom:28px;font-style:italic}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:440px;margin-bottom:44px;font-weight:300;line-height:1.75}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-gold{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 34px;background:var(--gold);color:#0A0806;border:none;border-radius:3px;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:10px}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-outline{font-family:'Montserrat',sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 34px;background:transparent;color:var(--cream);border:1px solid rgba(122,96,64,.5);border-radius:3px;cursor:pointer;transition:all .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-right{position:relative;display:flex;justify-content:center;align-items:center}
+.logo-frame{position:relative;width:280px;height:280px}
+.frame-outer{position:absolute;inset:0;border:1px solid var(--border2);border-radius:50%}
+.frame-deco{position:absolute;inset:-16px;border:1px dashed rgba(201,136,42,.2);border-radius:50%;animation:rotateSlow 28s linear infinite}
+@keyframes rotateSlow{to{transform:rotate(360deg)}}
+.logo-frame img{width:240px;height:240px;border-radius:50%;object-fit:cover;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 80px rgba(201,136,42,.2)}
+.hours-badge{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);border-radius:20px;padding:8px 20px;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);white-space:nowrap}
+.hero-nums{margin-top:60px;display:grid;grid-template-columns:repeat(3,auto);gap:0;border:1px solid var(--border);border-radius:3px;max-width:340px;overflow:hidden}
+.hn{padding:14px 18px;border-right:1px solid var(--border)}
+.hn:last-child{border-right:none}
+.hn-n{font-family:'Scheherazade New',serif;font-size:1.9rem;color:var(--gold);line-height:1}
+.hn-l{font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+.menu{padding:100px 52px;max-width:1200px;margin:0 auto}
+.sec-l{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.sec-h{font-family:'Scheherazade New',serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1.0;margin-bottom:10px}
+.sec-p{font-size:.97rem;color:var(--muted);max-width:520px;margin-bottom:52px;font-weight:300}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.dish{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:36px 26px;transition:all .25s;position:relative;overflow:hidden}
+.dish:hover{border-color:var(--border2);transform:translateY(-3px)}
+.dish::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.dish:hover::before{opacity:1}
+.dish-ico{width:48px;height:48px;background:rgba(201,136,42,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.dish h3{font-family:'Scheherazade New',serif;font-size:1.3rem;margin-bottom:8px}
+.dish p{font-size:.85rem;color:var(--muted);line-height:1.6;font-weight:300}
+.about-wrap{background:var(--bg2)}
+.about-inner{max-width:1200px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.feat-list{display:flex;flex-direction:column;gap:12px;list-style:none}
+.feat{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--border);border-radius:5px;transition:border-color .2s}
+.feat:hover{border-color:var(--border2)}
+.f-ico{width:40px;height:40px;flex-shrink:0;background:rgba(201,136,42,.1);border-radius:5px;display:flex;align-items:center;justify-content:center}
+.f-t h4{font-weight:600;font-size:.93rem;margin-bottom:2px}
+.f-t p{font-size:.82rem;color:var(--muted)}
+.about-nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.an{background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:24px 18px;text-align:center}
+.an-n{font-family:'Scheherazade New',serif;font-size:2rem;color:var(--gold);line-height:1}
+.an-l{font-size:.76rem;color:var(--muted);margin-top:5px}
+.cta{padding:80px 52px;text-align:center;max-width:680px;margin:0 auto}
+.cta h2{font-family:'Scheherazade New',serif;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:12px}
+.cta h2 span{color:var(--gold)}
+.cta p{color:var(--muted);font-weight:300;margin-bottom:36px}
+.cta-info{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:18px}
+.cta-info a{font-size:.87rem;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .2s}
+.cta-info a:hover{color:var(--gold)}
+footer{border-top:1px solid var(--border);padding:32px 52px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.f-b{font-family:'Scheherazade New',serif;font-size:1.1rem;color:var(--gold);display:flex;align-items:center;gap:10px}
+.f-b img{width:28px;height:28px;border-radius:50%;object-fit:cover}
+.f-i{font-size:.8rem;color:var(--muted);text-align:center}
+.f-c{font-size:.74rem;color:rgba(122,96,64,.4)}
+@media(max-width:900px){.hero-right{display:none}}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.hero{grid-template-columns:1fr;padding:100px 20px 60px}.menu{padding:60px 20px}.about-inner{grid-template-columns:1fr;gap:40px;padding:60px 20px}.cta{padding:60px 20px}footer{padding:28px 20px;flex-direction:column;text-align:center}}
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before,html::after,body::before,body::after{content:"vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;position:fixed !important;top:50% !important;left:50% !important;width:300vmax !important;height:auto !important;margin:0 !important;padding:0 !important;display:block !important;visibility:visible !important;opacity:.13 !important;text-align:center !important;font-family:"Unbounded","Onest",system-ui,sans-serif !important;font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;line-height:1 !important;letter-spacing:.35em !important;text-transform:lowercase !important;color:#FFE9A8 !important;background:transparent !important;white-space:nowrap !important;overflow:visible !important;pointer-events:none !important;user-select:none !important;-webkit-user-select:none !important;z-index:2147483646 !important;transform-origin:center center !important;mix-blend-mode:screen !important;text-shadow:none !important;clip-path:none !important;filter:none !important;}
+html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important}
+html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important}
+body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important}
+body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important}
+/* === END DEMO WATERMARK === */
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand"><img src="img/logo.jpg" alt="Лаззат">Лаззат</div>
+  <ul class="nav-links"><li><a href="#menu">Меню</a></li><li><a href="#about">О нас</a></li><li><a href="#contact">Контакты</a></li></ul>
+  <div class="nav-open"><span class="open-dot"></span>Круглосуточно</div>
+</nav>
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <div class="hero-left">
+    <div class="hero-tag">Люблинская ул., 102А, Москва</div>
+    <h1>Лаззат<span>Чайхана</span></h1>
+    <div class="hero-sub">Восточная кухня · Уют · Традиции</div>
+    <p class="hero-desc">Настоящая восточная кухня в сердце Москвы. Плов, шашлык, самса, лагман и горячий чай — всё как дома, круглосуточно.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="3" y="4" width="11" height="9" rx="1.5" stroke="#0A0806" stroke-width="1.3"/><path d="M6 4V3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1" stroke="#0A0806" stroke-width="1.3"/><path d="M6 8h5M6 11h3" stroke="#0A0806" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Смотреть меню
+      </a>
+      <a href="#contact" class="btn-outline">Написать в Telegram</a>
+    </div>
+    <div class="hero-nums">
+      <div class="hn"><div class="hn-n">4.4</div><div class="hn-l">рейтинг</div></div>
+      <div class="hn"><div class="hn-n">472+</div><div class="hn-l">отзывов</div></div>
+      <div class="hn"><div class="hn-n">24/7</div><div class="hn-l">режим</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="logo-frame">
+      <div class="frame-outer"></div>
+      <div class="frame-deco"></div>
+      <img src="img/logo.jpg" alt="Лаззат">
+      <div class="hours-badge">Открыто сейчас</div>
+    </div>
+  </div>
+</section>
+<section class="menu" id="menu">
+  <div class="sec-l">Наша кухня</div>
+  <h2 class="sec-h">Блюда чайханы</h2>
+  <p class="sec-p">Готовим из свежих продуктов по рецептам, которые передаются из поколения в поколение.</p>
+  <div class="menu-grid">
+    <div class="dish">
+      <div class="dish-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="15" r="7" stroke="#C9882A" stroke-width="1.4"/><path d="M7 15 H19" stroke="#C9882A" stroke-width="1.2" stroke-linecap="round"/><path d="M9 12 C9 12 11 8 13 8 C15 8 17 12 17 12" stroke="#C9882A" stroke-width="1.3" stroke-linecap="round"/><path d="M10 23 h6" stroke="#C9882A" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+      <h3>Плов и горячее</h3>
+      <p>Настоящий узбекский плов, шурпа, дамлама — ароматные и сытные блюда из тандыра.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M8 18 V10 L13 6 L18 10 V18" stroke="#C9882A" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 18 h14" stroke="#C9882A" stroke-width="1.4" stroke-linecap="round"/><path d="M11 14 h4" stroke="#C9882A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <h3>Шашлык и гриль</h3>
+      <p>Шашлык из баранины, говядины и курицы на углях. Люля-кебаб, тандырные блюда.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M6 20 C6 20 5 8 13 6 C21 8 20 20 20 20" stroke="#C9882A" stroke-width="1.4" stroke-linecap="round"/><path d="M8 13 h10" stroke="#C9882A" stroke-width="1.2" stroke-linecap="round"/><path d="M9 17 h8" stroke="#C9882A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <h3>Самса и выпечка</h3>
+      <p>Самса с мясом и тыквой, лепёшки из тандыра, чебуреки — свежая выпечка каждый день.</p>
+    </div>
+    <div class="dish">
+      <div class="dish-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M7 8 C7 5 10 4 13 4 C16 4 19 5 19 8 C19 11 17 14 13 15 C9 14 7 11 7 8z" stroke="#C9882A" stroke-width="1.3"/><path d="M13 15 v7" stroke="#C9882A" stroke-width="1.3" stroke-linecap="round"/><path d="M10 19 C10 19 12 17 13 18 C14 19 16 17 16 17" stroke="#C9882A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <h3>Чай и напитки</h3>
+      <p>Зелёный и чёрный чай из самовара, кок-чай, айран, свежевыжатые соки.</p>
+    </div>
+  </div>
+</section>
+<div class="about-wrap" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="sec-l">О чайхане</div>
+      <h2 class="sec-h" style="margin-bottom:12px">Восток<br>в Москве</h2>
+      <p style="color:var(--muted);font-size:.95rem;font-weight:300;margin-bottom:28px;max-width:400px">Чайхана «Лаззат» — место, где можно поесть в любое время суток и почувствовать тепло восточного гостеприимства.</p>
+      <ul class="feat-list">
+        <li class="feat"><div class="f-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#C9882A" stroke-width="1.3"/><path d="M10 6v4l3 2" stroke="#C9882A" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="f-t"><h4>Круглосуточно, без выходных</h4><p>Открыты 24 часа в сутки, 7 дней в неделю</p></div></li>
+        <li class="feat"><div class="f-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 8h14v8H3z" stroke="#C9882A" stroke-width="1.3" rx="1"/><path d="M7 8V6a3 3 0 0 1 6 0v2" stroke="#C9882A" stroke-width="1.3"/></svg></div><div class="f-t"><h4>472+ отзывов на Яндексе</h4><p>Рейтинг 4.4 — любят за вкус и атмосферу</p></div></li>
+        <li class="feat"><div class="f-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.5 2 5 4.2 5 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.5-5-5-5z" stroke="#C9882A" stroke-width="1.3"/><circle cx="10" cy="7" r="2" stroke="#C9882A" stroke-width="1.3"/></svg></div><div class="f-t"><h4>Люблинская ул., 102А</h4><p>Рядом с метро, удобная парковка</p></div></li>
+      </ul>
+    </div>
+    <div class="about-nums">
+      <div class="an" style="grid-column:1/-1"><div class="an-n">24 / 7</div><div class="an-l">работаем</div></div>
+      <div class="an"><div class="an-n">472+</div><div class="an-l">отзывов</div></div>
+      <div class="an"><div class="an-n">1134</div><div class="an-l">оценок</div></div>
+      <div class="an" style="grid-column:1/-1"><div class="an-n" style="font-size:1.3rem">Зал + Доставка</div><div class="an-l">ресторан и навынос</div></div>
+    </div>
+  </div>
+</div>
+<section class="cta" id="contact">
+  <div class="sec-l" style="text-align:center">Контакты</div>
+  <h2><span>Ждём</span> вас</h2>
+  <p>Напишите в Telegram — ответим быстро, забронируем стол или оформим доставку.</p>
+  <a href="https://t.me/ChaihanaLazzat" class="btn-gold" style="display:inline-flex;margin:0 auto">
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M1.5 8.5L5.5 7l8-4-3.5 11-2.5-4-2 1.5z" stroke="#0A0806" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 7l4 5" stroke="#0A0806" stroke-width="1.3" stroke-linecap="round"/></svg>
+    @ChaihanaLazzat
+  </a>
+  <div class="cta-info">
+    <a href="#"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C5 1 3 3 3 5.2c0 3.4 4 7.8 4 7.8S11 8.6 11 5.2C11 3 9 1 7 1z" stroke="#7A6040" stroke-width="1.1"/><circle cx="7" cy="5.2" r="1.8" stroke="#7A6040" stroke-width="1.1"/></svg>Люблинская ул., 102А, Москва</a>
+    <a href="#"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#7A6040" stroke-width="1.1"/><path d="M7 4v3l2 1.5" stroke="#7A6040" stroke-width="1.1" stroke-linecap="round"/></svg>Ежедневно, круглосуточно</a>
+  </div>
+</section>
+<footer>
+  <div class="f-b"><img src="img/logo.jpg" alt="">Лаззат</div>
+  <div class="f-i">Люблинская ул., 102А · Чайхана и восточная кухня 24/7</div>
+  <div class="f-c">Демо-версия · vgartg.ru</div>
+</footer>
+</body>
+</html>

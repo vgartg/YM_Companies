@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Матрёшка — салон красоты на Симферопольском</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+<style>
+:root{--bg:#0F0B0D;--bg2:#191316;--bg3:#221920;--rose:#D4607A;--rose2:#E8829A;--cream:#F5E8E0;--muted:#8A6A72;--border:rgba(212,96,122,.14);--border2:rgba(212,96,122,.32)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 52px;background:rgba(15,11,13,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:12px;font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--rose)}
+.nav-brand img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border2)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--rose)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 52px 80px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 70% 40%,rgba(212,96,122,.1) 0%,transparent 55%),radial-gradient(ellipse 30% 40% at 10% 80%,rgba(212,96,122,.06) 0%,transparent 50%)}
+.hero-content{position:relative;max-width:600px}
+.hero-overline{display:flex;align-items:center;gap:14px;font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:32px}
+.hero-overline span{width:36px;height:1px;background:var(--rose);opacity:.6}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(3.5rem,8vw,7rem);line-height:.92;letter-spacing:-.02em;margin-bottom:20px}
+.hero h1 i{font-style:italic;color:var(--rose)}
+.hero-tagline{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.2rem;color:rgba(212,96,122,.55);margin-bottom:28px}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:440px;margin-bottom:48px;font-weight:300;line-height:1.75}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-rose{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;padding:15px 36px;background:var(--rose);color:#0F0B0D;border:none;border-radius:2px;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:9px}
+.btn-rose:hover{background:var(--rose2);transform:translateY(-2px)}
+.btn-ghost{font-family:'DM Sans',sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;padding:15px 36px;background:transparent;color:var(--cream);border:1px solid rgba(138,106,114,.4);border-radius:2px;cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--rose);color:var(--rose)}
+.hero-logo{position:absolute;right:80px;top:50%;transform:translateY(-50%)}
+.logo-ring-wrap{width:260px;height:260px;position:relative}
+.ring1{position:absolute;inset:0;border-radius:50%;border:1px solid var(--border2)}
+.ring2{position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(212,96,122,.18);animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.logo-ring-wrap img{width:220px;height:220px;border-radius:50%;object-fit:cover;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 0 60px rgba(212,96,122,.18)}
+.hero-stats{margin-top:64px;display:grid;grid-template-columns:repeat(3,auto);gap:0;border:1px solid var(--border);border-radius:3px;max-width:360px}
+.hs{padding:16px 20px;border-right:1px solid var(--border)}
+.hs:last-child{border-right:none}
+.hs-n{font-family:'DM Serif Display',serif;font-size:1.9rem;color:var(--rose);line-height:1}
+.hs-l{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.svcs{padding:100px 52px;max-width:1200px;margin:0 auto}
+.label{font-size:.72rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:14px}
+.head{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin-bottom:10px}
+.sub{font-size:.97rem;color:var(--muted);max-width:500px;margin-bottom:54px;font-weight:300}
+.svc-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.svc{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:36px 28px;transition:all .25s;position:relative;overflow:hidden}
+.svc:hover{border-color:var(--border2);transform:translateY(-3px)}
+.svc::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose),transparent);opacity:0;transition:opacity .3s}
+.svc:hover::after{opacity:1}
+.svc-ico{width:48px;height:48px;background:rgba(212,96,122,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.svc h3{font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:10px}
+.svc p{font-size:.87rem;color:var(--muted);line-height:1.6;font-weight:300}
+.about-wrap{background:var(--bg2)}
+.about-inner{max-width:1200px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.feat{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--border);border-radius:6px;transition:border-color .2s}
+.feat:hover{border-color:var(--border2)}
+.feat-ico{width:40px;height:40px;flex-shrink:0;background:rgba(212,96,122,.1);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.feat-t h4{font-weight:600;font-size:.93rem;margin-bottom:2px}
+.feat-t p{font-size:.82rem;color:var(--muted)}
+.about-nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.an{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:26px 20px;text-align:center}
+.an-n{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--rose);line-height:1}
+.an-l{font-size:.78rem;color:var(--muted);margin-top:5px}
+.cta{padding:80px 52px;text-align:center;max-width:680px;margin:0 auto}
+.cta h2{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:12px}
+.cta h2 i{font-style:italic;color:var(--rose)}
+.cta p{color:var(--muted);font-weight:300;margin-bottom:36px}
+.cta-links{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:18px}
+.cta-links a{font-size:.87rem;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .2s}
+.cta-links a:hover{color:var(--rose)}
+footer{border-top:1px solid var(--border);padding:32px 52px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.f-b{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--rose);display:flex;align-items:center;gap:10px}
+.f-b img{width:28px;height:28px;border-radius:50%;object-fit:cover}
+.f-i{font-size:.8rem;color:var(--muted);text-align:center}
+.f-c{font-size:.74rem;color:rgba(138,106,114,.4)}
+@media(max-width:900px){.hero-logo{display:none}}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.hero{padding:100px 20px 60px}.svcs{padding:60px 20px}.about-inner{grid-template-columns:1fr;gap:40px;padding:60px 20px}.cta{padding:60px 20px}footer{padding:28px 20px;flex-direction:column;text-align:center}}
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before,html::after,body::before,body::after{content:"vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;position:fixed !important;top:50% !important;left:50% !important;width:300vmax !important;height:auto !important;margin:0 !important;padding:0 !important;display:block !important;visibility:visible !important;opacity:.13 !important;text-align:center !important;font-family:"Unbounded","Onest",system-ui,sans-serif !important;font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;line-height:1 !important;letter-spacing:.35em !important;text-transform:lowercase !important;color:#FFE9A8 !important;background:transparent !important;white-space:nowrap !important;overflow:visible !important;pointer-events:none !important;user-select:none !important;-webkit-user-select:none !important;z-index:2147483646 !important;transform-origin:center center !important;mix-blend-mode:screen !important;text-shadow:none !important;clip-path:none !important;filter:none !important;}
+html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important}
+html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important}
+body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important}
+body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important}
+/* === END DEMO WATERMARK === */
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand"><img src="img/logo.jpg" alt="Матрёшка">Матрёшка</div>
+  <ul class="nav-links"><li><a href="#svcs">Услуги</a></li><li><a href="#about">О салоне</a></li><li><a href="#contact">Запись</a></li></ul>
+</nav>
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-overline"><span></span>Симферопольский бул., 19к1</div>
+    <h1>Салон<br><i>красоты</i></h1>
+    <div class="hero-tagline">Уход · Стиль · Забота</div>
+    <p class="hero-desc">Профессиональный салон красоты в Москве. Стрижки, окрашивание, уход за волосами и ногтями — мастера с многолетним опытом.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-rose">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M1.5 8.5L5.5 7l8-4-3.5 11-2.5-4-2 1.5z" stroke="#0F0B0D" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 7l4 5" stroke="#0F0B0D" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Записаться
+      </a>
+      <a href="#svcs" class="btn-ghost">Услуги и цены</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-n">5.0</div><div class="hs-l">рейтинг</div></div>
+      <div class="hs"><div class="hs-n">370+</div><div class="hs-l">отзывов</div></div>
+      <div class="hs"><div class="hs-n">10–21</div><div class="hs-l">ежедневно</div></div>
+    </div>
+  </div>
+  <div class="hero-logo">
+    <div class="logo-ring-wrap">
+      <div class="ring1"></div>
+      <div class="ring2"></div>
+      <img src="img/logo.jpg" alt="Матрёшка">
+    </div>
+  </div>
+</section>
+<section class="svcs" id="svcs">
+  <div class="label">Что мы предлагаем</div>
+  <h2 class="head">Услуги салона</h2>
+  <p class="sub">Полный спектр услуг красоты — от классической стрижки до сложного окрашивания.</p>
+  <div class="svc-row">
+    <div class="svc">
+      <div class="svc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M7 7C7 7 6 13 9 15c3 2 6 0 6 0" stroke="#D4607A" stroke-width="1.4" stroke-linecap="round"/><path d="M6 18L11 13M20 18L15 13" stroke="#D4607A" stroke-width="1.4" stroke-linecap="round"/><circle cx="6" cy="19.5" r="2.5" stroke="#D4607A" stroke-width="1.3"/><circle cx="20" cy="19.5" r="2.5" stroke="#D4607A" stroke-width="1.3"/></svg></div>
+      <h3>Стрижки и укладки</h3>
+      <p>Женские, мужские и детские стрижки. Горячая укладка, выпрямление, объём.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="10" r="5" stroke="#D4607A" stroke-width="1.4"/><path d="M8 10C8 7 10 5 13 5s5 2 5 5" stroke="#D4607A" stroke-width="1.3" stroke-linecap="round"/><path d="M5 22C5 18 8.5 15 13 15s8 3 8 7" stroke="#D4607A" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <h3>Окрашивание</h3>
+      <p>Мелирование, балаяж, омбре, тонирование — техники на любой вкус и длину волос.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4C11 4 9 6 9 8.5c0 2.5 1.5 4.5 4 5.5 2.5-1 4-3 4-5.5C17 6 15 4 13 4z" stroke="#D4607A" stroke-width="1.3"/><path d="M13 14v8" stroke="#D4607A" stroke-width="1.3" stroke-linecap="round"/><path d="M10 18c0 0 2-2 3-1s3 1 3 1" stroke="#D4607A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <h3>Маникюр и педикюр</h3>
+      <p>Классический и аппаратный маникюр, покрытие гель-лаком, нейл-дизайн.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><ellipse cx="13" cy="9" rx="5" ry="3.5" stroke="#D4607A" stroke-width="1.4"/><path d="M8 9v7c0 2 2.5 3.5 5 3.5s5-1.5 5-3.5V9" stroke="#D4607A" stroke-width="1.4"/><path d="M10 13h6" stroke="#D4607A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <h3>Уход и восстановление</h3>
+      <p>Ламинирование, ботокс для волос, маски, кератиновое восстановление.</p>
+    </div>
+  </div>
+</section>
+<div class="about-wrap" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="label">Почему выбирают нас</div>
+      <h2 class="head" style="margin-bottom:12px">Уют и<br>профессионализм</h2>
+      <p style="color:var(--muted);font-size:.95rem;font-weight:300;margin-bottom:28px;max-width:400px">Ваш комфорт — наш приоритет. Индивидуальный подход к каждому клиенту.</p>
+      <ul class="feat-list">
+        <li class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15 17L10 13.5L5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="#D4607A" stroke-width="1.3" stroke-linejoin="round"/></svg></div><div class="feat-t"><h4>Рейтинг 5.0 на Яндекс.Картах</h4><p>370+ отзывов от постоянных клиентов</p></div></li>
+        <li class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#D4607A" stroke-width="1.3"/><path d="M10 6v4l3 2" stroke="#D4607A" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="feat-t"><h4>Ежедневно 10:00–21:00</h4><p>Без выходных, принимаем по записи и без</p></div></li>
+        <li class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.5 2 5 4.5 5 7c0 4 5 9 5 9s5-5 5-9c0-2.5-2.5-5-5-5z" stroke="#D4607A" stroke-width="1.3"/><circle cx="10" cy="7" r="2" stroke="#D4607A" stroke-width="1.3"/></svg></div><div class="feat-t"><h4>Симферопольский бул., 19к1</h4><p>Удобная транспортная доступность</p></div></li>
+      </ul>
+    </div>
+    <div class="about-nums">
+      <div class="an" style="grid-column:1/-1"><div class="an-n">5★</div><div class="an-l">рейтинг</div></div>
+      <div class="an"><div class="an-n">370+</div><div class="an-l">отзывов</div></div>
+      <div class="an"><div class="an-n">565</div><div class="an-l">оценок</div></div>
+      <div class="an" style="grid-column:1/-1"><div class="an-n">10–21</div><div class="an-l">без выходных</div></div>
+    </div>
+  </div>
+</div>
+<section class="cta" id="contact">
+  <div class="label" style="text-align:center">Запись</div>
+  <h2>Записаться <i>сейчас</i></h2>
+  <p>Напишите в Telegram — подберём мастера и удобное время.</p>
+  <a href="https://t.me/matreshka_beautysalon" class="btn-rose" style="display:inline-flex;margin:0 auto">
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M1.5 8.5L5.5 7l8-4-3.5 11-2.5-4-2 1.5z" stroke="#0F0B0D" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 7l4 5" stroke="#0F0B0D" stroke-width="1.3" stroke-linecap="round"/></svg>
+    @matreshka_beautysalon
+  </a>
+  <div class="cta-links">
+    <a href="#"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C5 1 3 3 3 5.2c0 3.4 4 7.8 4 7.8S11 8.6 11 5.2C11 3 9 1 7 1z" stroke="#8A6A72" stroke-width="1.1"/><circle cx="7" cy="5.2" r="1.8" stroke="#8A6A72" stroke-width="1.1"/></svg>Симферопольский бул., 19, корп. 1</a>
+    <a href="#"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="#8A6A72" stroke-width="1.1"/><path d="M7 4v3l2 1.5" stroke="#8A6A72" stroke-width="1.1" stroke-linecap="round"/></svg>Ежедневно 10:00–21:00</a>
+  </div>
+</section>
+<footer>
+  <div class="f-b"><img src="img/logo.jpg" alt="">Матрёшка</div>
+  <div class="f-i">Симферопольский бул., 19к1 · Салон красоты</div>
+  <div class="f-c">Демо-версия · vgartg.ru</div>
+</footer>
+</body>
+</html>

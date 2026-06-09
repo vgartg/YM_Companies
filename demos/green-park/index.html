@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Грин Парк — салон красоты на Берёзовой аллее</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+<style>
+:root{--bg:#080E0A;--bg2:#0F1812;--bg3:#162018;--sage:#7DBF8A;--sage2:#A0D4AC;--text:#E8F0E8;--muted:#5A7860;--border:rgba(125,191,138,.14);--border2:rgba(125,191,138,.32)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 52px;background:rgba(8,14,10,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-brand{font-family:'Tenor Sans',serif;font-size:1.1rem;letter-spacing:.1em;color:var(--sage);display:flex;align-items:center;gap:10px}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--sage)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 52px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 75% 40%,rgba(125,191,138,.09) 0%,transparent 55%),radial-gradient(ellipse 25% 35% at 10% 75%,rgba(125,191,138,.05) 0%,transparent 50%)}
+.hero-leaf{position:absolute;right:60px;top:50%;transform:translateY(-50%);opacity:.06}
+.hero-content{position:relative;max-width:600px}
+.overline{display:flex;align-items:center;gap:14px;font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:32px}
+.overline-dash{width:32px;height:1px;background:var(--sage);opacity:.6}
+.hero h1{font-family:'Tenor Sans',serif;font-size:clamp(3.5rem,8vw,7rem);line-height:.9;letter-spacing:-.01em;margin-bottom:16px}
+.hero h1 i{color:var(--sage)}
+.hero-tagline{font-family:'Tenor Sans',serif;font-size:1.15rem;color:rgba(125,191,138,.5);margin-bottom:28px;letter-spacing:.06em}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:440px;margin-bottom:48px;font-weight:300;line-height:1.75}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-sage{font-family:'Manrope',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;padding:15px 34px;background:var(--sage);color:#080E0A;border:none;border-radius:3px;cursor:pointer;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:10px}
+.btn-sage:hover{background:var(--sage2);transform:translateY(-2px)}
+.btn-ghost{font-family:'Manrope',sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;padding:15px 34px;background:transparent;color:var(--text);border:1px solid rgba(90,120,96,.4);border-radius:3px;cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--sage);color:var(--sage)}
+.hero-nums{margin-top:64px;display:flex;gap:0;border:1px solid var(--border);border-radius:3px;max-width:380px;overflow:hidden}
+.hn{flex:1;padding:16px 18px;border-right:1px solid var(--border)}
+.hn:last-child{border-right:none}
+.hn-n{font-family:'Tenor Sans',serif;font-size:2rem;color:var(--sage);line-height:1}
+.hn-l{font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.svcs{padding:100px 52px;max-width:1200px;margin:0 auto}
+.lbl{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-bottom:12px}
+.hd{font-family:'Tenor Sans',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin-bottom:10px}
+.sb{font-size:.97rem;color:var(--muted);max-width:500px;margin-bottom:52px;font-weight:300}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.sc{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:36px 26px;transition:all .25s;position:relative}
+.sc:hover{border-color:var(--border2);transform:translateY(-3px)}
+.sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--sage),transparent);opacity:0;transition:opacity .3s}
+.sc:hover::after{opacity:1}
+.sc-ico{width:48px;height:48px;background:rgba(125,191,138,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.sc h3{font-family:'Tenor Sans',serif;font-size:1.2rem;margin-bottom:10px}
+.sc p{font-size:.85rem;color:var(--muted);line-height:1.65;font-weight:300}
+.about-wrap{background:var(--bg2)}
+.about-inner{max-width:1200px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.feat{display:flex;align-items:center;gap:16px;padding:18px 20px;border:1px solid var(--border);border-radius:5px;transition:border-color .2s}
+.feat:hover{border-color:var(--border2)}
+.feat-ico{width:40px;height:40px;flex-shrink:0;background:rgba(125,191,138,.1);border-radius:5px;display:flex;align-items:center;justify-content:center}
+.feat-t h4{font-weight:600;font-size:.93rem;margin-bottom:2px}
+.feat-t p{font-size:.82rem;color:var(--muted)}
+.about-nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.an{background:var(--bg3);border:1px solid var(--border);border-radius:5px;padding:24px 18px;text-align:center}
+.an-n{font-family:'Tenor Sans',serif;font-size:2rem;color:var(--sage);line-height:1}
+.an-l{font-size:.76rem;color:var(--muted);margin-top:5px}
+.cta{padding:80px 52px;text-align:center;max-width:680px;margin:0 auto}
+.cta h2{font-family:'Tenor Sans',serif;font-size:clamp(2rem,4vw,3.2rem);margin-bottom:12px}
+.cta h2 i{color:var(--sage)}
+.cta p{color:var(--muted);font-weight:300;margin-bottom:36px}
+.cta-links{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:18px}
+.cta-links a{font-size:.87rem;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color .2s}
+.cta-links a:hover{color:var(--sage)}
+footer{border-top:1px solid var(--border);padding:32px 52px;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.f-b{font-family:'Tenor Sans',serif;font-size:1rem;color:var(--sage)}
+.f-i{font-size:.8rem;color:var(--muted);text-align:center}
+.f-c{font-size:.74rem;color:rgba(90,120,96,.4)}
+@media(max-width:768px){nav{padding:14px 20px}.nav-links{display:none}.hero{padding:100px 20px 60px}.svcs{padding:60px 20px}.about-inner{grid-template-columns:1fr;gap:40px;padding:60px 20px}.cta{padding:60px 20px}footer{padding:28px 20px;flex-direction:column;text-align:center}}
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before,html::after,body::before,body::after{content:"vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;position:fixed !important;top:50% !important;left:50% !important;width:300vmax !important;height:auto !important;margin:0 !important;padding:0 !important;display:block !important;visibility:visible !important;opacity:.13 !important;text-align:center !important;font-family:"Unbounded","Onest",system-ui,sans-serif !important;font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;line-height:1 !important;letter-spacing:.35em !important;text-transform:lowercase !important;color:#FFE9A8 !important;background:transparent !important;white-space:nowrap !important;overflow:visible !important;pointer-events:none !important;user-select:none !important;-webkit-user-select:none !important;z-index:2147483646 !important;transform-origin:center center !important;mix-blend-mode:screen !important;text-shadow:none !important;clip-path:none !important;filter:none !important;}
+html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important}
+html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important}
+body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important}
+body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important}
+/* === END DEMO WATERMARK === */
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C7 2 5 4 5 6.5c0 3 4 7.5 4 7.5s4-4.5 4-7.5C13 4 11 2 9 2z" stroke="#7DBF8A" stroke-width="1.2"/><path d="M9 3C7.5 5 8 8 9 9" stroke="#7DBF8A" stroke-width="1" stroke-linecap="round"/></svg>
+    Green Park
+  </div>
+  <ul class="nav-links"><li><a href="#svcs">Услуги</a></li><li><a href="#about">О салоне</a></li><li><a href="#contact">Запись</a></li></ul>
+</nav>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-leaf" width="500" height="500" viewBox="0 0 500 500" fill="none"><path d="M250 50C150 50 50 150 50 250C50 350 150 450 250 450C350 450 450 350 450 250C450 150 350 50 250 50Z" stroke="#7DBF8A" stroke-width="1"/><path d="M250 100C180 100 100 180 100 250C100 320 180 400 250 400" stroke="#7DBF8A" stroke-width="1"/><path d="M150 150L350 350M350 150L150 350" stroke="#7DBF8A" stroke-width=".5"/></svg>
+  <div class="hero-content">
+    <div class="overline"><span class="overline-dash"></span>Берёзовая аллея, 17 корп. 2</div>
+    <h1>Green<br><i>Park</i></h1>
+    <div class="hero-tagline">Салон красоты · Уход и стиль</div>
+    <p class="hero-desc">Уютный салон красоты в зелёном квартале Москвы. Стрижки, окрашивание, маникюр и уходовые процедуры — для тех, кто ценит качество и атмосферу.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-sage">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M1.5 8.5L5.5 7l8-4-3.5 11-2.5-4-2 1.5z" stroke="#080E0A" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 7l4 5" stroke="#080E0A" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Записаться
+      </a>
+      <a href="#svcs" class="btn-ghost">Услуги</a>
+    </div>
+    <div class="hero-nums">
+      <div class="hn"><div class="hn-n">5.0</div><div class="hn-l">рейтинг</div></div>
+      <div class="hn"><div class="hn-n">343+</div><div class="hn-l">отзывов</div></div>
+      <div class="hn"><div class="hn-n">10–21</div><div class="hn-l">ежедневно</div></div>
+    </div>
+  </div>
+</section>
+<section class="svcs" id="svcs">
+  <div class="lbl">Услуги</div>
+  <h2 class="hd">Для вашей красоты</h2>
+  <p class="sb">Полный спектр услуг — от стрижки до комплексного ухода за кожей и ногтями.</p>
+  <div class="svc-grid">
+    <div class="sc">
+      <div class="sc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M7 7C7 7 6 13 9 15c3 2 6 0 6 0" stroke="#7DBF8A" stroke-width="1.4" stroke-linecap="round"/><path d="M6 18L11 13M20 18L15 13" stroke="#7DBF8A" stroke-width="1.4" stroke-linecap="round"/><circle cx="6" cy="19.5" r="2.5" stroke="#7DBF8A" stroke-width="1.3"/><circle cx="20" cy="19.5" r="2.5" stroke="#7DBF8A" stroke-width="1.3"/></svg></div>
+      <h3>Стрижки и укладки</h3>
+      <p>Женские, мужские стрижки. Горячая укладка, выпрямление, вечерние причёски.</p>
+    </div>
+    <div class="sc">
+      <div class="sc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="10" r="4.5" stroke="#7DBF8A" stroke-width="1.4"/><path d="M8 10C8 7.5 10 5.5 13 5.5" stroke="#7DBF8A" stroke-width="1.3" stroke-linecap="round"/><path d="M5 22C5 18.5 8.5 16 13 16s8 2.5 8 6" stroke="#7DBF8A" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <h3>Окрашивание</h3>
+      <p>Мелирование, балаяж, омбре, тонирование, окрашивание в один тон — любая техника.</p>
+    </div>
+    <div class="sc">
+      <div class="sc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 4C11 4 9 6 9 8.5c0 2.5 1.5 4.5 4 5.5 2.5-1 4-3 4-5.5C17 6 15 4 13 4z" stroke="#7DBF8A" stroke-width="1.3"/><path d="M13 14v8" stroke="#7DBF8A" stroke-width="1.3" stroke-linecap="round"/><path d="M10 18c0 0 2-2 3-1s3 1 3 1" stroke="#7DBF8A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <h3>Маникюр и педикюр</h3>
+      <p>Классический, аппаратный, покрытие гель-лаком, укрепление, нейл-дизайн.</p>
+    </div>
+    <div class="sc">
+      <div class="sc-ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><ellipse cx="13" cy="9" rx="5" ry="3" stroke="#7DBF8A" stroke-width="1.4"/><path d="M8 9v7c0 2 2.5 3.5 5 3.5s5-1.5 5-3.5V9" stroke="#7DBF8A" stroke-width="1.4"/><path d="M10 13h6" stroke="#7DBF8A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+      <h3>Уход за волосами</h3>
+      <p>Ламинирование, ботокс для волос, кератиновое восстановление, маски и уходовые ритуалы.</p>
+    </div>
+  </div>
+</section>
+<div class="about-wrap" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="lbl">О салоне</div>
+      <h2 class="hd" style="margin-bottom:12px">Ваш салон<br>в зелёном районе</h2>
+      <p style="color:var(--muted);font-size:.95rem;font-weight:300;margin-bottom:28px;max-width:400px">Салон «Грин Парк» создан для тех, кто хочет выглядеть и чувствовать себя лучше — в любой день недели.</p>
+      <ul class="feat-list">
+        <li class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15 17L10 13.5L5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="#7DBF8A" stroke-width="1.3" stroke-linejoin="round"/></svg></div><div class="feat-t"><h4>Рейтинг 5.0 на Яндекс.Картах</h4><p>343+ отзывов, без единой негативной оценки</p></div></li>
+        <li class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#7DBF8A" stroke-width="1.3"/><path d="M10 6v4l3 2" stroke="#7DBF8A" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="feat-t"><h4>Ежедневно 10:00–21:00</h4><p>Принимаем по записи и без — звоните или пишите</p></div></li>
+        <li class="feat"><div class="feat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C7.5 2 5 4.2 5 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.5-5-5-5z" stroke="#7DBF8A" stroke-width="1.3"/><circle cx="10" cy="7" r="2" stroke="#7DBF8A" stroke-width="1.3"/></svg></div><div class="feat-t"><h4>Берёзовая аллея, 17 корп. 2</h4><p>Тихий зелёный квартал, рядом с МКАД</p></div></li>
+      </ul>
+    </div>
+    <div class="about-nums">
+      <div class="an" style="grid-column:1/-1"><div class="an-n">5★</div><div class="an-l">рейтинг</div></div>
+      <div class="an"><div class="an-n">343+</div><div class="an-l">отзывов</div></div>
+      <div class="an"><div class="an-n">541</div><div class="an-l">оценок</div></div>
+      <div class="an" style="grid-column:1/-1"><div class="an-n">10–21</div><div class="an-l">без выходных</div></div>
+    </div>
+  </div>
+</div>
+<section class="cta" id="contact">
+  <div class="lbl" style="text-align:center">Запись</div>
+  <h2>Запишитесь <i>сейчас</i></h2>
+  <p>Напишите или позвоните — подберём удобное время и мастера под вашу задачу.</p>
+  <a href="tel:+79254101088" class="btn-sage" style="display:inline-flex;margin:0 auto">
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M3 2h3l1.5 4-2 1.5c1 2 2.5 3.5 4.5 4.5L11.5 10l4 1.5v3c-8 1-14-5-12.5-12.5z" stroke="#080E0A" stroke-width="1.2" stroke-linejoin="round"/></svg>
+    +7 925 410-10-88
+  </a>
+  <div class="cta-links">
+    <a href="https://t.me/+79254101088">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7l3.5-1.2 6.5-3.3-3 9-2-3.5-1.5 1.2z" stroke="#5A7860" stroke-width="1.1" stroke-linejoin="round"/><path d="M4.5 5.8l2.5 3.5" stroke="#5A7860" stroke-width="1.1" stroke-linecap="round"/></svg>
+      Написать в Telegram
+    </a>
+    <a href="#">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1C5 1 3 3 3 5.2c0 3.4 4 7.8 4 7.8S11 8.6 11 5.2C11 3 9 1 7 1z" stroke="#5A7860" stroke-width="1.1"/><circle cx="7" cy="5.2" r="1.8" stroke="#5A7860" stroke-width="1.1"/></svg>
+      Берёзовая аллея, 17, корп. 2
+    </a>
+  </div>
+</section>
+<footer>
+  <div class="f-b">Green Park</div>
+  <div class="f-i">Берёзовая аллея, 17к2 · Салон красоты · Ежедн. 10–21</div>
+  <div class="f-c">Демо-версия · vgartg.ru</div>
+</footer>
+</body>
+</html>
