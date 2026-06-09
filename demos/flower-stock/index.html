@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Цветочный склад — цветы оптом и в розницу, доставка 24/7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+<style>
+:root {
+  --bg: #060D08;
+  --bg2: #0D1810;
+  --bg3: #132016;
+  --green: #3DAA5A;
+  --lime: #B8E04A;
+  --text: #E8F5E2;
+  --text-muted: #5C8060;
+  --border: rgba(61,170,90,0.15);
+  --border2: rgba(61,170,90,0.35);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 52px;
+  background: rgba(6,13,8,0.9);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700; font-size: 1.1rem;
+  color: var(--lime);
+  display: flex; align-items: center; gap: 12px;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: .8rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-muted); transition: color .2s;
+}
+.nav-links a:hover { color: var(--lime); }
+.nav-badge {
+  background: rgba(184,224,74,0.12);
+  border: 1px solid rgba(184,224,74,0.3);
+  color: var(--lime);
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 20px;
+  display: flex; align-items: center; gap: 6px;
+}
+.live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--lime); animation: blink 1.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:.3} }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 100px 52px 80px;
+  gap: 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 10% 50%, rgba(61,170,90,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 90% 20%, rgba(184,224,74,0.05) 0%, transparent 50%);
+}
+.hero-left { position: relative; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 28px;
+}
+.hero-tag-line { width: 28px; height: 1px; background: var(--green); }
+.hero h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 6.5vw, 6rem);
+  line-height: .95;
+  letter-spacing: -.02em; margin-bottom: 20px;
+}
+.hero h1 .accent { color: var(--lime); font-style: italic; display: block; }
+.hero-desc {
+  font-size: 1.05rem; color: var(--text-muted);
+  max-width: 440px; margin-bottom: 44px; font-weight: 300; line-height: 1.75;
+}
+.hero-pills {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px;
+}
+.pill {
+  font-size: .75rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: all .2s;
+}
+.pill:hover, .pill.active { border-color: var(--border2); color: var(--lime); background: rgba(184,224,74,0.06); }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-leaf {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600; font-size: .85rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 15px 32px;
+  background: var(--lime); color: #060D08;
+  border: none; border-radius: 3px;
+  cursor: pointer; transition: background .2s, transform .15s;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-leaf:hover { background: #ccf060; transform: translateY(-2px); }
+.btn-border {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; font-size: .85rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 15px 32px;
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border2);
+  border-radius: 3px; cursor: pointer; transition: all .2s;
+}
+.btn-border:hover { border-color: var(--lime); color: var(--lime); }
+
+/* HERO RIGHT - botanical illustration SVG */
+.hero-right {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+}
+.botanical-bg {
+  width: 100%; max-width: 460px;
+  aspect-ratio: 1;
+  position: relative;
+}
+.bot-ring {
+  position: absolute; inset: 10%;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+.bot-ring-2 {
+  position: absolute; inset: 25%;
+  border: 1px dashed rgba(61,170,90,0.2);
+  border-radius: 50%;
+}
+.bot-center {
+  position: absolute; inset: 35%;
+  background: radial-gradient(circle, rgba(184,224,74,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.bot-stat {
+  position: absolute;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+.bot-stat-n {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700; font-size: 1.8rem; color: var(--lime); line-height: 1;
+}
+.bot-stat-l { font-size: .72rem; color: var(--text-muted); margin-top: 3px; letter-spacing: .06em; }
+/* SVG botanical illustration centered */
+.bot-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* SERVICES */
+.svcs { padding: 100px 52px; max-width: 1200px; margin: 0 auto; }
+.sec-label {
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 14px;
+}
+.sec-h {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700; font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1; margin-bottom: 10px;
+}
+.sec-p { font-size: .95rem; color: var(--text-muted); font-weight: 300; max-width: 500px; margin-bottom: 56px; }
+.svc-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;
+}
+.svc-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 36px 28px;
+  transition: all .25s;
+  position: relative; overflow: hidden;
+}
+.svc-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.svc-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.svc-card:hover::before { opacity: 1; }
+.svc-icon {
+  width: 48px; height: 48px;
+  background: rgba(61,170,90,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.svc-card h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700; font-size: 1.15rem; margin-bottom: 10px;
+}
+.svc-card p { font-size: .87rem; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+.svc-tag {
+  margin-top: 16px; display: inline-block;
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--lime);
+  background: rgba(184,224,74,0.08);
+  padding: 4px 12px; border-radius: 12px;
+}
+
+/* DELIVERY */
+.delivery { background: var(--bg2); }
+.delivery-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 80px 52px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.dlv-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.dlv-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: 6px; transition: border-color .2s;
+}
+.dlv-item:hover { border-color: var(--border2); }
+.dlv-ico {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(61,170,90,0.1); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.dlv-text h4 { font-weight: 600; font-size: .95rem; margin-bottom: 2px; }
+.dlv-text p { font-size: .82rem; color: var(--text-muted); font-weight: 300; }
+.dlv-nums { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dn-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px; padding: 28px 20px; text-align: center;
+}
+.dn-n {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700; font-size: 2rem; color: var(--lime); line-height: 1;
+}
+.dn-l { font-size: .78rem; color: var(--text-muted); margin-top: 6px; }
+
+/* CTA */
+.cta { padding: 80px 52px; text-align: center; max-width: 700px; margin: 0 auto; }
+.cta h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px;
+}
+.cta h2 i { font-style: italic; color: var(--lime); }
+.cta p { color: var(--text-muted); font-size: .95rem; font-weight: 300; margin-bottom: 36px; }
+.cta-info { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; }
+.cta-info a {
+  font-size: .87rem; color: var(--text-muted);
+  display: flex; align-items: center; gap: 8px; transition: color .2s;
+}
+.cta-info a:hover { color: var(--lime); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 52px;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 14px;
+}
+.fl {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700; font-size: 1rem; color: var(--lime);
+  display: flex; align-items: center; gap: 10px;
+}
+.fc { font-size: .8rem; color: var(--text-muted); text-align: center; }
+.fr { font-size: .74rem; color: rgba(92,128,96,0.4); }
+
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; gap: 40px; }
+  .hero-right { display: none; }
+  .svcs { padding: 60px 20px; }
+  .delivery-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+  .cta { padding: 60px 20px; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+}
+
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before,html::after,body::before,body::after{content:"vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;position:fixed !important;top:50% !important;left:50% !important;width:300vmax !important;height:auto !important;margin:0 !important;padding:0 !important;display:block !important;visibility:visible !important;opacity:.13 !important;text-align:center !important;font-family:"Unbounded","Onest",system-ui,sans-serif !important;font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;line-height:1 !important;letter-spacing:.35em !important;text-transform:lowercase !important;color:#FFE9A8 !important;background:transparent !important;white-space:nowrap !important;overflow:visible !important;pointer-events:none !important;user-select:none !important;-webkit-user-select:none !important;z-index:2147483646 !important;transform-origin:center center !important;mix-blend-mode:screen !important;text-shadow:none !important;clip-path:none !important;filter:none !important;}
+html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important}
+html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important}
+body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important}
+body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important}
+/* === END DEMO WATERMARK === */
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3 C10 3 8 5 8 7.5 C8 10 9.5 12 12 13 C14.5 12 16 10 16 7.5 C16 5 14 3 12 3z" stroke="#B8E04A" stroke-width="1.3"/>
+      <path d="M12 13 v7" stroke="#B8E04A" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M8 17 C8 17 10 15 12 16 C14 17 16 15 16 15" stroke="#B8E04A" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    Цветочный склад
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#delivery">Доставка</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+  <div class="nav-badge">
+    <span class="live-dot"></span>
+    24/7
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span class="hero-tag-line"></span>Ленинский просп., 7</div>
+    <h1>Цветы<span class="accent">круглосуточно</span></h1>
+    <p class="hero-desc">Оптовые и розничные продажи свежих цветов в Москве. Широкий ассортимент срезки, составление букетов и доставка без выходных — 24 часа в сутки.</p>
+    <div class="hero-pills">
+      <span class="pill active">Розы</span>
+      <span class="pill">Тюльпаны</span>
+      <span class="pill">Пионы</span>
+      <span class="pill">Хризантемы</span>
+      <span class="pill">Экзотика</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-leaf">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+          <path d="M1.5 8.5L5.5 7l8-4-3.5 11-2.5-4-2 1.5z" stroke="#060D08" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M5.5 7l4 5" stroke="#060D08" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Заказать цветы
+      </a>
+      <a href="#services" class="btn-border">Оптовые условия</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="botanical-bg">
+      <div class="bot-ring"></div>
+      <div class="bot-ring-2"></div>
+      <div class="bot-center"></div>
+      <!-- Botanical SVG illustration -->
+      <svg class="bot-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stem 1 -->
+        <path d="M200 340 C200 300 195 260 200 220" stroke="#3DAA5A" stroke-width="2" stroke-linecap="round"/>
+        <!-- Leaves 1 -->
+        <path d="M200 280 C180 270 160 250 175 235 C185 245 195 265 200 280z" fill="rgba(61,170,90,0.2)" stroke="#3DAA5A" stroke-width="1.2"/>
+        <path d="M200 260 C220 250 240 230 225 218 C215 228 205 245 200 260z" fill="rgba(61,170,90,0.15)" stroke="#3DAA5A" stroke-width="1.2"/>
+        <!-- Flower 1 - center -->
+        <circle cx="200" cy="200" r="12" fill="rgba(184,224,74,0.15)" stroke="#B8E04A" stroke-width="1.3"/>
+        <circle cx="200" cy="200" r="5" fill="rgba(184,224,74,0.3)"/>
+        <!-- Petals center flower -->
+        <ellipse cx="200" cy="183" rx="7" ry="12" fill="rgba(184,224,74,0.2)" stroke="#B8E04A" stroke-width="1" transform="rotate(0,200,200)"/>
+        <ellipse cx="200" cy="183" rx="7" ry="12" fill="rgba(184,224,74,0.2)" stroke="#B8E04A" stroke-width="1" transform="rotate(45,200,200)"/>
+        <ellipse cx="200" cy="183" rx="7" ry="12" fill="rgba(184,224,74,0.2)" stroke="#B8E04A" stroke-width="1" transform="rotate(90,200,200)"/>
+        <ellipse cx="200" cy="183" rx="7" ry="12" fill="rgba(184,224,74,0.2)" stroke="#B8E04A" stroke-width="1" transform="rotate(135,200,200)"/>
+        <!-- Side stem left -->
+        <path d="M200 280 C170 270 150 240 140 210" stroke="#3DAA5A" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="140" cy="205" r="8" fill="rgba(61,170,90,0.15)" stroke="#3DAA5A" stroke-width="1.2"/>
+        <ellipse cx="140" cy="192" rx="5" ry="9" fill="rgba(61,170,90,0.15)" stroke="#3DAA5A" stroke-width="1" transform="rotate(0,140,205)"/>
+        <ellipse cx="140" cy="192" rx="5" ry="9" fill="rgba(61,170,90,0.15)" stroke="#3DAA5A" stroke-width="1" transform="rotate(60,140,205)"/>
+        <ellipse cx="140" cy="192" rx="5" ry="9" fill="rgba(61,170,90,0.15)" stroke="#3DAA5A" stroke-width="1" transform="rotate(120,140,205)"/>
+        <!-- Side stem right -->
+        <path d="M200 260 C230 250 255 230 265 205" stroke="#3DAA5A" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="268" cy="200" r="8" fill="rgba(184,224,74,0.1)" stroke="#B8E04A" stroke-width="1.2"/>
+        <ellipse cx="268" cy="187" rx="5" ry="9" fill="rgba(184,224,74,0.12)" stroke="#B8E04A" stroke-width="1" transform="rotate(0,268,200)"/>
+        <ellipse cx="268" cy="187" rx="5" ry="9" fill="rgba(184,224,74,0.12)" stroke="#B8E04A" stroke-width="1" transform="rotate(72,268,200)"/>
+        <ellipse cx="268" cy="187" rx="5" ry="9" fill="rgba(184,224,74,0.12)" stroke="#B8E04A" stroke-width="1" transform="rotate(144,268,200)"/>
+      </svg>
+      <!-- Stats positioned absolutely -->
+      <div class="bot-stat" style="top:15%;left:5%">
+        <div class="bot-stat-n">5★</div>
+        <div class="bot-stat-l">рейтинг</div>
+      </div>
+      <div class="bot-stat" style="bottom:20%;right:5%">
+        <div class="bot-stat-n">336+</div>
+        <div class="bot-stat-l">отзывов</div>
+      </div>
+      <div class="bot-stat" style="bottom:5%;left:15%">
+        <div class="bot-stat-n">24/7</div>
+        <div class="bot-stat-l">доставка</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svcs" id="services">
+  <div class="sec-label">Что мы предлагаем</div>
+  <h2 class="sec-h">Цветы для любого случая</h2>
+  <p class="sec-p">От одного стебля до оптовой партии — работаем с частными клиентами и бизнесом.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path d="M13 4 C11 4 9 6 9 8.5 C9 11 10.5 13 13 14 C15.5 13 17 11 17 8.5 C17 6 15 4 13 4z" stroke="#3DAA5A" stroke-width="1.3"/>
+          <path d="M13 14 v9" stroke="#3DAA5A" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M9 19 C9 19 11 17 13 18 C15 19 17 17 17 17" stroke="#3DAA5A" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Розничные букеты</h3>
+      <p>Готовые букеты и цветы на заказ. Розы, тюльпаны, пионы, орхидеи — свежие поставки каждый день.</p>
+      <span class="svc-tag">В розницу</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="4" y="10" width="18" height="13" rx="2" stroke="#3DAA5A" stroke-width="1.3"/>
+          <path d="M8 10 V7 a5 5 0 0 1 10 0 v3" stroke="#3DAA5A" stroke-width="1.3"/>
+          <path d="M10 16 h6M10 19 h4" stroke="#3DAA5A" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Оптовые поставки</h3>
+      <p>Срезка для флористов, цветочных магазинов, салонов и event-агентств. Оптовые цены при заказе от партии.</p>
+      <span class="svc-tag">Для бизнеса</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="3" y="8" width="14" height="10" rx="1.5" stroke="#3DAA5A" stroke-width="1.3"/>
+          <path d="M17 11 h3 l3 3 v4 H17 V11z" stroke="#3DAA5A" stroke-width="1.3" stroke-linejoin="round"/>
+          <circle cx="8" cy="20" r="2" stroke="#3DAA5A" stroke-width="1.2"/>
+          <circle cx="20" cy="20" r="2" stroke="#3DAA5A" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h3>Доставка 24/7</h3>
+      <p>Быстрая доставка по Москве в любое время суток. Без выходных, праздников и без задержек.</p>
+      <span class="svc-tag">Круглосуточно</span>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <circle cx="13" cy="13" r="9" stroke="#3DAA5A" stroke-width="1.3"/>
+          <path d="M9 13 C9 10 11 8 13 8 C15 8 17 10 17 13" stroke="#3DAA5A" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M9 13 h8" stroke="#3DAA5A" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M11 15 C11 17 12 18 13 18 C14 18 15 17 15 15" stroke="#3DAA5A" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Декор и флористика</h3>
+      <p>Оформление мероприятий, свадеб и корпоративов. Авторские композиции под ваш стиль и бюджет.</p>
+      <span class="svc-tag">Оформление</span>
+    </div>
+  </div>
+</section>
+
+<div class="delivery" id="delivery">
+  <div class="delivery-inner">
+    <div>
+      <div class="sec-label">Доставка</div>
+      <h2 class="sec-h" style="margin-bottom:12px">Работаем<br>без остановки</h2>
+      <p style="color:var(--text-muted);font-size:.95rem;font-weight:300;margin-bottom:32px;max-width:380px">
+        Круглосуточная доставка свежих цветов по Москве. Срочный заказ — от 1 часа.
+      </p>
+      <ul class="dlv-list">
+        <li class="dlv-item">
+          <div class="dlv-ico">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="7" stroke="#3DAA5A" stroke-width="1.2"/>
+              <path d="M10 6v4l3 2" stroke="#3DAA5A" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="dlv-text">
+            <h4>Режим 24/7</h4>
+            <p>Принимаем и выполняем заказы в любое время</p>
+          </div>
+        </li>
+        <li class="dlv-item">
+          <div class="dlv-ico">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 10 h9 l2-3 h3" stroke="#3DAA5A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 10 v4 h14 v-4" stroke="#3DAA5A" stroke-width="1.2" stroke-linejoin="round"/>
+              <circle cx="6" cy="15.5" r="1.5" stroke="#3DAA5A" stroke-width="1.1"/>
+              <circle cx="15" cy="15.5" r="1.5" stroke="#3DAA5A" stroke-width="1.1"/>
+            </svg>
+          </div>
+          <div class="dlv-text">
+            <h4>По всей Москве</h4>
+            <p>Доставка в любой район и ближайшее Подмосковье</p>
+          </div>
+        </li>
+        <li class="dlv-item">
+          <div class="dlv-ico">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 3C7.2 3 5 5.2 5 8S10 17 10 17S15 10.8 15 8S12.8 3 10 3z" stroke="#3DAA5A" stroke-width="1.2"/>
+              <circle cx="10" cy="8" r="2" stroke="#3DAA5A" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="dlv-text">
+            <h4>Ленинский просп., 7</h4>
+            <p>Самовывоз и работа со склада — ежедневно</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="dlv-nums">
+      <div class="dn-card" style="grid-column:1/-1">
+        <div class="dn-n">5★</div>
+        <div class="dn-l">рейтинг на Яндекс.Картах</div>
+      </div>
+      <div class="dn-card">
+        <div class="dn-n">336+</div>
+        <div class="dn-l">отзывов</div>
+      </div>
+      <div class="dn-card">
+        <div class="dn-n">24/7</div>
+        <div class="dn-l">режим работы</div>
+      </div>
+      <div class="dn-card" style="grid-column:1/-1">
+        <div class="dn-n">Опт + Розница</div>
+        <div class="dn-l">любой объём заказа</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cta" id="contact">
+  <div class="sec-label" style="justify-content:center">Связаться</div>
+  <h2>Заказать <i>цветы</i>?</h2>
+  <p>Напишите или позвоните — ответим быстро и поможем выбрать лучшее предложение.</p>
+  <a href="tel:+79015904851" class="btn-leaf" style="display:inline-flex;margin:0 auto">
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+      <path d="M3 2h3l1.5 4-2 1.5c1 2 2.5 3.5 4.5 4.5L11.5 10l4 1.5v3c-8 1-14-5-12.5-12.5z" stroke="#060D08" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+    +7 901 590-48-51
+  </a>
+  <div class="cta-info">
+    <a href="https://t.me/+79015904851">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M1 7L4 6.2l7-3.5-3 9.5-2-3-2 1.5z" stroke="#5C8060" stroke-width="1.1" stroke-linejoin="round"/>
+        <path d="M4 6.2l3 4" stroke="#5C8060" stroke-width="1.1" stroke-linecap="round"/>
+      </svg>
+      Написать в Telegram
+    </a>
+    <a href="#">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1C5 1 3 3 3 5.2c0 3.4 4 7.8 4 7.8S11 8.6 11 5.2C11 3 9 1 7 1z" stroke="#5C8060" stroke-width="1.1"/>
+        <circle cx="7" cy="5.2" r="1.8" stroke="#5C8060" stroke-width="1.1"/>
+      </svg>
+      Ленинский просп., 7, Москва
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 3 C10 3 8 5 8 7.5 C8 10 9.5 12 12 13 C14.5 12 16 10 16 7.5 C16 5 14 3 12 3z" stroke="#B8E04A" stroke-width="1.3"/>
+      <path d="M12 13 v7" stroke="#B8E04A" stroke-width="1.3" stroke-linecap="round"/>
+      <path d="M9 17 C9 17 11 15 12 16 C13 17 15 15 15 15" stroke="#B8E04A" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    Цветочный склад
+  </div>
+  <div class="fc">Ленинский просп., 7 · Круглосуточно</div>
+  <div class="fr">Демо-версия · vgartg.ru</div>
+</footer>
+
+</body>
+</html>

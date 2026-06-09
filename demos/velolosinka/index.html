@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВелоЛосинка — прокат и ремонт велосипедов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800;900&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<!-- === BEGIN DEMO WATERMARK === -->
+<script src="demo-guard.js" defer></script>
+<!-- === END DEMO WATERMARK === -->
+<style>
+:root {
+  --bg: #080F0B;
+  --bg2: #0F1D12;
+  --bg3: #162519;
+  --accent: #78C850;
+  --accent2: #9FDF74;
+  --text: #E8F5E2;
+  --text-muted: #8BA882;
+  --border: rgba(120,200,80,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 40px;
+  background: rgba(8,15,11,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: .04em;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo svg { flex-shrink: 0; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: 'Exo 2', sans-serif;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding: 120px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 80% 30%, rgba(120,200,80,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(120,200,80,0.05) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(120,200,80,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,200,80,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+}
+.hero-badge {
+  position: relative;
+  font-family: 'Exo 2', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.7); }
+}
+.hero h1 {
+  position: relative;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: .95;
+  letter-spacing: -.02em;
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+.hero h1 span { color: var(--accent); display: block; }
+.hero-desc {
+  position: relative;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin-bottom: 44px;
+  line-height: 1.7;
+}
+.hero-cta {
+  position: relative;
+  display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+}
+.btn-primary {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  background: var(--accent);
+  color: #080F0B;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+.btn-ghost {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.hero-stats {
+  position: relative;
+  margin-top: 80px;
+  display: flex; gap: 48px; flex-wrap: wrap;
+}
+.stat-item { display: flex; flex-direction: column; }
+.stat-num {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: .8rem;
+  color: var(--text-muted);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* SERVICES */
+.section {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: 'Exo 2', sans-serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin-bottom: 60px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+}
+.service-card {
+  background: var(--bg2);
+  padding: 44px 36px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color .25s, transform .25s;
+}
+.service-card:hover {
+  border-color: rgba(120,200,80,0.5);
+  transform: translateY(-4px);
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 52px; height: 52px;
+  background: rgba(120,200,80,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.service-card h3 {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+.service-card p {
+  font-size: .9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.service-price {
+  margin-top: 20px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+.service-price span {
+  font-weight: 400;
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+
+/* FEATURES */
+.features-wrap { background: var(--bg2); }
+.features-inner {
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.features-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.features-list li {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: border-color .2s;
+}
+.features-list li:hover { border-color: rgba(120,200,80,0.4); }
+.feat-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(120,200,80,0.12);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.feat-text h4 {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: .95rem;
+  margin-bottom: 4px;
+}
+.feat-text p { font-size: .85rem; color: var(--text-muted); }
+.features-visual {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.fv-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.fv-num {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--accent);
+}
+.fv-label { font-size: .8rem; color: var(--text-muted); margin-top: 4px; }
+
+/* SCHEDULE */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+.sched-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+.sched-day {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.sched-time {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+/* CTA SECTION */
+.cta-wrap {
+  margin: 0 40px 100px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 50% 100%, rgba(120,200,80,0.08) 0%, transparent 70%);
+}
+.cta-wrap h2 {
+  position: relative;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 16px;
+}
+.cta-wrap p {
+  position: relative;
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto 36px;
+}
+.cta-contact {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  margin-top: 16px;
+}
+.cta-contact a {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--text-muted);
+  display: flex; align-items: center; gap: 8px;
+  transition: color .2s;
+}
+.cta-contact a:hover { color: var(--accent); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-logo {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--accent);
+}
+.footer-addr {
+  font-size: .82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.footer-copy {
+  font-size: .78rem;
+  color: rgba(139,168,130,0.5);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { gap: 28px; }
+  .section { padding: 60px 20px; }
+  .features-inner { grid-template-columns: 1fr; gap: 40px; }
+  .cta-wrap { padding: 50px 24px; margin: 0 20px 60px; }
+  footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+}
+
+/* === BEGIN DEMO WATERMARK (vgartg.ru) === */
+html::before,html::after,body::before,body::after{content:"vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru · vgartg.ru" !important;position:fixed !important;top:50% !important;left:50% !important;width:300vmax !important;height:auto !important;margin:0 !important;padding:0 !important;display:block !important;visibility:visible !important;opacity:.13 !important;text-align:center !important;font-family:"Unbounded","Onest",system-ui,sans-serif !important;font-weight:800 !important;font-size:clamp(26px,2.8vmax,44px) !important;line-height:1 !important;letter-spacing:.35em !important;text-transform:lowercase !important;color:#FFE9A8 !important;background:transparent !important;white-space:nowrap !important;overflow:visible !important;pointer-events:none !important;user-select:none !important;-webkit-user-select:none !important;z-index:2147483646 !important;transform-origin:center center !important;mix-blend-mode:screen !important;text-shadow:none !important;clip-path:none !important;filter:none !important;}
+html::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-34vmax) !important}
+html::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,-11vmax) !important}
+body::before{transform:translate(-50%,-50%) rotate(-45deg) translate(0,11vmax) !important}
+body::after{transform:translate(-50%,-50%) rotate(-45deg) translate(0,34vmax) !important}
+/* === END DEMO WATERMARK === */
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <svg width="28" height="20" viewBox="0 0 28 20" fill="none">
+      <circle cx="7" cy="14" r="5" stroke="#78C850" stroke-width="1.5"/>
+      <circle cx="21" cy="14" r="5" stroke="#78C850" stroke-width="1.5"/>
+      <path d="M7 14 L10 6 L18 6 L21 14" stroke="#78C850" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M10 6 L12 2 L16 2 L18 6" stroke="#78C850" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="7" cy="14" r="1.5" fill="#78C850"/>
+      <circle cx="21" cy="14" r="1.5" fill="#78C850"/>
+    </svg>
+    ВелоЛосинка
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#schedule">Время работы</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Москва, Курганская ул., 3
+  </div>
+  <h1>Велосипеды<span>в Лосином</span>острове</h1>
+  <p class="hero-desc">Прокат, ремонт и подготовка велосипедов рядом с парком. Для прогулок, спорта и зимних приключений.</p>
+  <div class="hero-cta">
+    <a href="#services" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <circle cx="9" cy="9" r="7" stroke="#080F0B" stroke-width="1.5"/>
+        <path d="M9 5v4l3 2" stroke="#080F0B" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Смотреть услуги
+    </a>
+    <a href="#contact" class="btn-ghost">Написать в Telegram</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">5.0</span>
+      <span class="stat-label">рейтинг</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">420+</span>
+      <span class="stat-label">отзывов</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">10–20</span>
+      <span class="stat-label">ежедневно</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-label">Что мы делаем</div>
+  <h2 class="section-title">Услуги</h2>
+  <p class="section-sub">Всё для велосипедного отдыха — от проката на час до полного технического обслуживания.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="8" cy="20" r="6" stroke="#78C850" stroke-width="1.5"/>
+          <circle cx="20" cy="20" r="6" stroke="#78C850" stroke-width="1.5"/>
+          <path d="M8 20L11 10L17 10L20 20" stroke="#78C850" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M11 10L12.5 6L15.5 6L17 10" stroke="#78C850" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="8" cy="20" r="2" fill="rgba(120,200,80,0.3)"/>
+          <circle cx="20" cy="20" r="2" fill="rgba(120,200,80,0.3)"/>
+        </svg>
+      </div>
+      <h3>Прокат велосипедов</h3>
+      <p>Городские, горные, детские и семейные велосипеды в отличном состоянии. Шлемы и замки в комплекте.</p>
+      <div class="service-price">от 200 ₽ <span>/ час</span></div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M6 22L22 6" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M9 7L21 7L21 19" stroke="#78C850" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="9" cy="19" r="3" stroke="#78C850" stroke-width="1.5"/>
+          <path d="M6 9l3 3-3 3" stroke="#78C850" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Ремонт и обслуживание</h3>
+      <p>Диагностика, замена покрышек, настройка тормозов и переключателей, полная мойка и смазка.</p>
+      <div class="service-price">от 500 ₽</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M14 4 L14 7" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 21 L14 24" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 14 L7 14" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M21 14 L24 14" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M7 7 L9.5 9.5" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M18.5 18.5 L21 21" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M21 7 L18.5 9.5" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M9.5 18.5 L7 21" stroke="#78C850" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="4" stroke="#78C850" stroke-width="1.5"/>
+          <circle cx="14" cy="14" r="1.5" fill="rgba(120,200,80,0.4)"/>
+        </svg>
+      </div>
+      <h3>Зимний прокат</h3>
+      <p>Фэтбайки и зимние велосипеды для езды по снегу и льду. Покоряйте парк в любую погоду.</p>
+      <div class="service-price">от 400 ₽ <span>/ час</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="features-wrap" id="about">
+  <div class="features-inner">
+    <div>
+      <div class="section-label">Почему мы</div>
+      <h2 class="section-title" style="margin-bottom:12px">Рядом с парком,<br>далеко от проблем</h2>
+      <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:32px;max-width:400px">
+        Мы находимся у входа в Лосиный остров — крупнейший лесопарк Москвы.
+        Берите велосипед и сразу в путь.
+      </p>
+      <ul class="features-list">
+        <li>
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2L12.5 7.5H18L13.5 11L15 17L10 13.5L5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="#78C850" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="feat-text">
+            <h4>Рейтинг 5.0 на Яндекс.Картах</h4>
+            <p>420+ реальных отзывов от велосипедистов и семей</p>
+          </div>
+        </li>
+        <li>
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="3" y="4" width="14" height="12" rx="2" stroke="#78C850" stroke-width="1.3"/>
+              <path d="M7 4V2M13 4V2" stroke="#78C850" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M3 8h14" stroke="#78C850" stroke-width="1.3"/>
+              <path d="M7 12h2M11 12h2" stroke="#78C850" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="feat-text">
+            <h4>Открыты каждый день</h4>
+            <p>С 10:00 до 20:00, без выходных и праздников</p>
+          </div>
+        </li>
+        <li>
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2C7 2 4 5 4 9c0 5 6 9 6 9s6-4 6-9c0-4-3-7-6-7z" stroke="#78C850" stroke-width="1.3"/>
+              <circle cx="10" cy="9" r="2.5" stroke="#78C850" stroke-width="1.3"/>
+            </svg>
+          </div>
+          <div class="feat-text">
+            <h4>Лучшее расположение</h4>
+            <p>Курганская ул., 3 — прямо у входа в Лосиный остров</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="features-visual">
+      <div class="fv-card" style="grid-column:1/-1">
+        <div class="fv-num">5★</div>
+        <div class="fv-label">средний рейтинг</div>
+      </div>
+      <div class="fv-card">
+        <div class="fv-num">420+</div>
+        <div class="fv-label">отзывов</div>
+      </div>
+      <div class="fv-card">
+        <div class="fv-num">365</div>
+        <div class="fv-label">дней в году</div>
+      </div>
+      <div class="fv-card" style="grid-column:1/-1">
+        <div class="fv-num">3 км</div>
+        <div class="fv-label">от МКАД до парка</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="schedule">
+  <div class="section-label">Расписание</div>
+  <h2 class="section-title">Время работы</h2>
+  <div class="schedule-grid">
+    <div class="sched-card">
+      <div class="sched-day">Пн — Пт</div>
+      <div class="sched-time">10:00 – 20:00</div>
+    </div>
+    <div class="sched-card">
+      <div class="sched-day">Сб — Вс</div>
+      <div class="sched-time">09:00 – 21:00</div>
+    </div>
+    <div class="sched-card">
+      <div class="sched-day">Праздники</div>
+      <div class="sched-time">10:00 – 20:00</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap" id="contact">
+  <h2>Готовы к поездке?</h2>
+  <p>Напишите нам в Telegram или позвоните — забронируем велосипед заранее или встретим на месте.</p>
+  <a href="https://t.me/+79360006393" class="btn-primary" style="display:inline-flex">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M2 9L7 7l8-4-4 12-3-4-3 2z" stroke="#080F0B" stroke-width="1.3" stroke-linejoin="round"/>
+      <path d="M7 7l4 5" stroke="#080F0B" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+    Написать в Telegram
+  </a>
+  <div class="cta-contact">
+    <a href="tel:+79360006393">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 2h3l1.5 4-2 1.5c1 2 2.5 3.5 4.5 4.5L11.5 10l4 1.5v3c-8 1-14-5-12.5-12.5z" stroke="#8BA882" stroke-width="1.2" stroke-linejoin="round"/>
+      </svg>
+      +7 936 000-63-93
+    </a>
+    <a href="https://vk.com/velolosinka">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <rect x="1" y="1" width="14" height="14" rx="3" stroke="#8BA882" stroke-width="1.2"/>
+        <path d="M3 6h2.5c0 0 .5 3 2.5 3s1-3 1-3H11" stroke="#8BA882" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M9 9v2" stroke="#8BA882" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      vk.com/velolosinka
+    </a>
+    <a href="https://yandex.ru/maps">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M8 1C5.5 1 3 3.5 3 6.5c0 4 5 8.5 5 8.5S13 10.5 13 6.5C13 3.5 10.5 1 8 1z" stroke="#8BA882" stroke-width="1.2"/>
+        <circle cx="8" cy="6.5" r="2" stroke="#8BA882" stroke-width="1.2"/>
+      </svg>
+      Курганская ул., 3
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="15" viewBox="0 0 28 20" fill="none" style="display:inline;vertical-align:middle;margin-right:6px">
+      <circle cx="7" cy="14" r="5" stroke="#78C850" stroke-width="1.5"/>
+      <circle cx="21" cy="14" r="5" stroke="#78C850" stroke-width="1.5"/>
+      <path d="M7 14 L10 6 L18 6 L21 14" stroke="#78C850" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="7" cy="14" r="1.5" fill="#78C850"/>
+      <circle cx="21" cy="14" r="1.5" fill="#78C850"/>
+    </svg>
+    ВелоЛосинка
+  </div>
+  <div class="footer-addr">Курганская ул., 3, Москва</div>
+  <div class="footer-copy">Демо-версия сайта · vgartg.ru</div>
+</footer>
+
+</body>
+</html>
